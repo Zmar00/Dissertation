@@ -1,0 +1,280 @@
+% Version 1.0.0 DE
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%        			Päambel   				   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%        			Päambel / Kompilieren      %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Hinweise zum Kompilieren / Setzreihenfolge:
+%
+% Für die korrekte Darstellung des Layouts sowie der Bibliografien (multibib) kompilieren Sie bitte wie folgt:
+%
+% - Windows 10: über die Eingabeaufforderung PowerShell bzw. Eingabeaufforderung (cmd).
+% Gehen Sie dazu in den Ordner dieses Projekts, wählen Sie keine Datei an, klicken Sie auf eine leere Stelle mit der linken Maustaste und öffnen Sie das Kontextmenü bei gedrückter Umschalttaste (Umschalttaste + rechter Mausklick) und wählen Sie "PowerShell-Fenster hier öffnen". Geben Sie anschließend "cmd" ein und rufen Sie die Kompiliervorgänge einzeln wie folgt auf:
+%
+% - macOS Big Sur 11.0.1: über das Terminal.
+% Gehen Sie dazu in den Überordner dieses Projekts und wählen den Ordner an, in dem sich das Projekt befindet. Öffnen Sie nun das Kontextmenü (Sekundärklick) durch Drücken von Control+Maustaste oder beim Trackpad durch Tippen/Klicken mit zwei Fingern. Wählen Sie nun „(Dienste)/Neues Terminal beim Ordner“ und rufen Sie die Kompiliervorgänge einzeln wie folgt auf:
+%
+%
+% pdflatex KSP_Diss_A5
+% bibtex KSP_Diss_A5
+% bibtex journal					% Der Dateiname der mit Bibtex auszuführenden Datei wird im Befehl "\newcites{}" in dieser TeX-Datei angegeben
+% bibtex conference				% Der Dateiname der mit Bibtex auszuführenden Datei wird im Befehl "\newcites{}" in dieser TeX-Datei angegeben
+% pdflatex KSP_Diss_A5
+% pdflatex KSP_Diss_A5
+%
+%
+% Fertig.
+%
+%
+% Anmerkungen
+%
+% In TeXstudio die Kompilieraufrufe dauerhaft ändern (Windows 10, TeXstudio 3.0.1):
+% Optionen/TeXstudio konfigurieren.../Erzeugen/ -> Und hier die Einträge unter "Standardcompiler" und "Standard Bibliographieprogramm" anpassen.
+%
+% In TeXstudio die Kompilieraufrufe manuell ausführen (Windows 10, TeXstudio 3.0.1):
+% Tools/Befehle/ -> Und hier die Einträge "PDFLaTeX" und "Bibtex" (Bibtex kann jedoch nicht für bestimmte Dateien in TeXstudio ausgeführt werden, hierzu muss die Eingabeaufforderung genutzt werden s.o.).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%        			Päambel / Documentclass    %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Lädt die Dokumentklasse "scrbook" (KOMA-Script-Book) mit den Eigenschaften: keine Punkte hinter der Nummerierung, Schriftgröße 10pt, Sprachpakete: englische und neue deutsche Rechtschreibung einbinden (deutsch ist Standard)
+\documentclass[listof=totoc,numbers=noenddot,10pt,english,ngerman]{scrbook} 
+%\documentclass[halfparskip,numbers=noenddot,a5paper,10pt,english,ngerman]{scrbook}
+
+% \RequirePackage[ngerman=ngerman-x-latest]{hyphsubst}
+% Verbesserte Silbentrennung im Deutschen nach dem aktuellen Stand
+
+% Weitere Pakete hier einfügen
+\usepackage{booktabs}
+\usepackage{wrapfig}
+\usepackage[all]{nowidow} % Verhindert Hurenkinder
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{acronym}
+\usepackage{trfsigns}
+\usepackage{cite}
+\usepackage{caption} % Für Bildunterschriften und Tabellenüberschriften
+\usepackage{subcaption} % Für "subfigures"
+\usepackage{enumitem}
+\usepackage{calc}
+\usepackage{multirow}
+%\usepackage{epstopdf}
+%\usepackage{url}
+%\usepackage{subfigure} % old package for subfigures
+%\usepackage{wrapfig}
+%\providecommand\phantomsection{}
+%\usepackage{color}
+%\usepackage{cancel}
+%\usepackage{amsthm}
+%\usepackage{ulem}
+%\usepackage{empheq}
+%\usepackage{xcolor}
+%\usepackage{float}
+\usepackage{blindtext} % Blindtext zur Textdarstellung in der Vorlage ermöglichen
+%\usepackage{showframe} % Seitenränder anzeigen
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%    		Präambel / Silbentrennung     	   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\hyphenation{
+Ge-schich-te
+An-ten-ne
+% Worte, die nicht getrennt werden sollen, bitte ohne Bindestrich in diese Liste entragen
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%       Präambel /  Bibliografie			   %%%
+%%%			/ Zitat / Zitieren 				   %%%
+%%%			Literaturverzeichnis	   		   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Zitieren aus der Bibliografie "Externe_Literatur.bib": "\cite{<ID>}"
+% Zitieren aus der Bibliografie "Eigene_Journal_Papers.bib": "\citejournal{<ID>}
+% Zitieren aus der Bibliografie "Eigene_Konferenz_Papers.bib": "\citeconference{<ID>}
+
+% Standardmäßig werden alle Titel/Referenzen in den Bibliografien ausgegeben. Sollen nur die zitierten Titel/Referenzen in der Bibliografie ausgegeben werden, muss der Befehl "\nocite{*}" bzw. "\nocitejournal{*} oder "\nociteconference{*}" in der Datei ./Inhalt/Literaturverzeichnis.tex auskommentiert werden
+
+\usepackage[resetlabels]{multibib} % Jede Bibliographie beginnt bei Zähler [1], sofern als Bibliografiestil "\bibliographiestyle{plain}" gewählt ist
+%\usepackage{multibib} % Der Zähler der Bibliographien wird nicht zurückgesetzt (fortlaufende Zählung beginnend bei [1] in der Bibliografie"Journalartikel" und fortlaufend in der Bibliografie "Konferenzbeiträge"), sofern als Bibliografiestil "\bibliographiestyle{plain}" gewählt ist, bei einem anderen Bibliografiestil, z.B. "\bibliographystyle{alpha} wird kein Zähler verwendet
+\newcites{journal}{Literatur/Eigene_Journal_Papers}
+\newcites{conference}{Literatur/Eigene_Konferenz_Papers}
+%
+\usepackage{etoolbox}
+\BeforeBeginEnvironment{thebibliography}{% Umdefinieren, um die eigenen Publikationen ohne Umbruch einzufügen
+  \let\origchapter\chapter % save the original definition of "\chapter"
+  \let\chapter\section % make \chapter behave like "\section"
+}
+\AfterEndEnvironment{thebibliography}{%
+  \let\chapter\origchapter % restore the original definition of "\chapter"
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%          Präambel / Titelangaben		   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% pdf-Titel
+\newcommand{\pdftitle}{Titel\ der\ Dissertation}
+
+% Autor
+\newcommand{\autor}{Vorname\ Nachname}
+
+% Präambel weitestgehend ausgelagert in die Datei "dokOptions.tex"; Einbindung der Datei muss an dieser Stelle erfolgen
+% Einstellungen wie Skalierung, Schriftart, Abstände sowie die Pakete "geometry", "figure", "captions" werden in der folgenden Datei verwaltet
+\input{dokOptions_A5}
+
+% Titel
+\newcommand{\headtitle}{Titel der Dissertation}
+
+%\makeindex
+
+\newcommand{\nauthor}{Vorname Nachname}
+\newcommand{\akadtitel}{M.Sc.}
+\newcommand{\geburtsort}{Geburtsort}
+
+\newcommand{\ntitle}{Titel der Dissertation}
+
+\newcommand{\referent}{Prof. Dr.-Ing. Hauptreferent}
+\newcommand{\korreferent}{Prof. Dr.-Ing. Korreferent}
+\newcommand{\ndatum}{tt.mm.jjjj}
+
+%\renewcommand{\figurename}{Abbildung}
+%\renewcommand{\tablename}{Tabelle}
+
+%\ohead[]{}
+%\ofoot[\pagemark]{\pagemark} % Seitenzahlen unten außen
+
+%\ihead[]{}
+%\ohead[]{\headmark} % Kopfzeilen oben außen
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%				Begin Dokument				   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%				Dokument / Layout			   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Voreingestellter Seitenstil verwenden
+\pagenumbering{gobble}
+
+% Römische Seitennummerierung verwenden
+\pagestyle{scrheadings}
+
+% Setzt Kapitelüberschrift auch auf rechte Seite der Kopfzeile, da keine Unterkapitel
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter\ \  #1}{\thechapter\ \  #1}} 
+
+% Seitenzahl mit 5 beginnen (KSP setzt 4 beschriftete Seiten davor)
+%\setcounter{page}{5}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%				Titelblatt (include)		   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\include{Inhalt/Titelblatt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%			Titelteil / Kapitel (include)	   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Titelteil; Kapitel im Titelteil erhalten keine Kapitelnummer im Inhaltsverzeichnis
+\frontmatter 
+
+% Zusammenfassung
+\include{Inhalt/Zusammenfassung}
+
+% Vorwort
+\include{Inhalt/Vorwort}
+
+% Inhaltsverzeichnis \tableofcontents (siehe Inhaltsverzeichnis.tex)
+\include{Inhalt/Inhaltsverzeichnis}
+
+% Abkürzungen und Symbole
+\include{Inhalt/Abkuerzungen_und_Symbole}
+
+% Jedes neue Kapitel beginnt auf der rechten Seite
+\cleardoublepage 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%				Hauptteil / Layout			   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Römische Seitennummerierung verwenden
+\pagenumbering{roman} 
+\setcounter{page}{1}
+
+% Hauptteil; Kapitel im Hauptteil werden mit Zahlen nummeriert im Inhaltsverzeichnis
+\mainmatter 
+
+% Zeilenabstand innerhalb Tabellen (urspruenglich 1,4)
+\renewcommand{\arraystretch}{1.2} 
+
+% Abstand zwischen Spalten in Tabellen
+\setlength{\tabcolsep}{1mm} 
+
+% Abstände bei Aufzählungspunkten
+\setlist[itemize]{itemsep=0mm, topsep=1mm} 
+
+% Arabische Seitennummerierung verwenden
+\pagenumbering{arabic} 
+
+%\RedeclareSectionCommand[beforeskip=-1.00\baselineskip,afterskip=0.50\baselineskip]{section}
+%\RedeclareSectionCommand[beforeskip=-0.75\baselineskip,afterskip=0.50\baselineskip]{subsection}
+%\RedeclareSectionCommand[beforeskip=-0.50\baselineskip,afterskip=0.25\baselineskip]{subsubsection}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%			Hauptteil / Kapitel (include)	   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Einleitung und Motivation
+\include{Inhalt/01_Einleitung_und_Motivation}
+
+% Stand der Technik
+\include{Inhalt/02_Stand_der_Technik}
+
+% Theorie
+\include{Inhalt/03_Theorie}
+
+% Zusammenfassung und Ausblick
+\include{Inhalt/04_Zusammenfassung_und_Ausblick}
+
+% Schlussfolgerungen und Ausblick
+%\include{Inhalt/07_Schlussfolgerungen_und_Ausblick}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%				Anhang (include)	 		   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Anhang; Kapitel im Anhang erhalten Großbuchstaben im Inhaltsverzeichnis
+\appendix 
+
+\include{Inhalt/Anhang}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%				Verzeichnisse (include)		   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Abbildungsverzeichnis
+\listoffigures
+
+% Tabellenverzeichnis
+\listoftables
+
+% Literaturverzeichnis
+\include{Inhalt/Literaturverzeichnis}
+
+% Setzt Kapitelüberschrift auch auf rechte Seite der Kopfzeile, da keine Unterkapitel
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter\ \  #1}{\thechapter\ \  #1}} 
+
+% Änderung der Abstände zwischen den Einträgen
+\setlength{\parskip}{0.3\baselineskip plus 0.15\baselineskip minus 0.15\baselineskip} 
+
+\end{document}

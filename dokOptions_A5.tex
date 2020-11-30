@@ -1,0 +1,496 @@
+% Version 1.0.0 DE
+%
+% Seitenbegrenzungen anzeigen
+%\usepackage{showframe}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% 				Informationen			  %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Zeilenumbrüche manuell in \listoffigures und \listoftables setzen mit "\protect\\" (ohne Anführungszeichen) im optionalen Parameter des "\caption"-Befehls
+% Beispiel: 
+%\caption[Exterior view of the KIT library. Consetetur sadipscing elitr,\protect\\ sed diam nonumy eirmod tempor invidunt ut labore]{Exterior view of the KIT library. Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore}
+
+% Geschütztes Leerzeichen: "~" (ohne Anführungszeichen)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% 	Allgemeine Einstellungen			  %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Seitenränder einstellen
+\setlength{\topskip}{10.5pt} % Verhindern einer Fehlermeldung (Zusatz: siehe Kohm 2020: S. 36, Tabelle 2.1 "Satzspiegelmaße in Abhängigkeit von DIV bei A4 ohne Berücksichtigung von \topskip oder BCOR)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%     	Eingabe, Ausgabe, Umlaute 		   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Laden der Sprachpakete (die optionalen Parameter "ngerman" für die neue deutsche Rechtschreibung und "english" sind bereits in den optionalen Parametern der "\documentclass" gesetzt)
+\usepackage{babel}
+
+% Eingabe von Umlauten (ä, ö, ü sowie ß) durch den Parameter [utf8]
+\usepackage[utf8]{inputenc}
+
+% Ausgabe von Umlauten
+\usepackage[T1]{fontenc}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%        		Skalierung					  %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Bitte skalieren Sie, entsprechend der Seitenanzahl ihres Dokuments, die Seitenränder wie folgt:
+
+% - bis 199 Seiten (innen: 20mm, außen: 15-18mm) >>> textwidth=113mm
+% - 200 bis 399 Seiten (innen: 23mm, außen: 15-18mm) >>> textwidth=110mm
+% - ab 400 Seiten (innen: 25mm, außen: 15mm) >>> textwidth=108mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%        		Papierformat (A5)			   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Seitengröße auf "a4paper" oder "a5paper" einstellbar (1. oder 2. "usepackage" wählen)
+% Hinweis: Die Seitenränder für die Skalierung (s. o. "Skalierung") kann man mithilfe des Pakets "geometry" verwalten, siehe bitte hierzu die entsprechende Dokumentation unter: http://ftp.fau.de/ctan/macros/latex/contrib/geometry/geometry.pdf
+
+% (1)
+\usepackage[%
+a5paper,%
+headheight=1.5\baselineskip,%
+top=25mm,%
+inner=20mm,%
+outer=15mm,%
+%lines=38,%
+%textwidth=113mm,%
+footnotesep=7mm,%
+heightrounded=true%
+]{geometry}
+
+% (2)
+%\usepackage[
+%a4paper,
+%headheight=1.5\baselineskip,
+%top=25mm,
+%lines=46,
+%textwidth=160mm,
+%heightrounded=true,
+%%bindingoffset=15mm
+%]{geometry}
+
+%\usepackage[a4paper,top=33mm,bottom=32mm,outer=25mm,inner=35mm]{geometry}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%        			Fußzeile			   	   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Abstand zwischen Textkörper und Unterkante Fußzeile (Seitenzahlen)
+\setlength{\footskip}{10mm}
+
+% Abstand zwischen Fließtext und Fußnotentrennlinie 
+\setlength{\skip\footins}{20pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%        		Fußnote					   	   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% (1) Position und Größe der Fußnoten bei 2-stelligen Fußnotennummern
+\deffootnote[1.8em]{1.8em}{0em}{\makebox[1.7em][l]{\textsuperscript{\thefootnotemark\ }}}
+
+% (2) Bitte wählen Sie für 3-stellige Fußnotennummern den folgenden Befehl und deaktivieren Sie (1), indem Sie den vorhergehenden Befehl "\deffootnote{1.7em}{0em}{\makebox[1.7em][l]{\thefootnotemark}}" auskommentieren
+%\deffootnote{2.2em}{0em}{\makebox[2.2em][l]{\thefootnotemark}}
+
+% Verhindert das Fortsetzen von Fussnoten auf der gegenüberliegenden Seite
+\interfootnotelinepenalty=10000 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  				Absatz				  	   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Zeilen auf der Seite verteilen (Es wird kein Ausgleich des unteren Seitenrandes durch Dehnung der Absatzabstände durchgeführt) 
+\raggedbottom   
+
+% Einzugtiefe (horizontaler Abstand) der ersten Zeile des Absatzes
+\setlength{\parindent}{0pt}
+
+% Vertikaler Abstand zwischen den Absätzen
+\setlength{\parskip}{2.5mm}
+
+% Schusterjungen (einzelne Zeile unten auf der Seite) unterdrücken
+\clubpenalty = 10000 
+
+% Hurenkinder (einzelne Zeile oben auf der Seite) unterdrücken
+\widowpenalty = 10000
+\displaywidowpenalty = 10000
+
+% Silbentrennung am Seitenumbruch verhindern
+\brokenpenalty = 10000
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  			Gleitobjekte				   %%%
+%%%			Abbildungen	Tabellen			   %%%
+%%%			"{figure}", "{table}"		   	   %%%
+%%%		Beschriftungen, Abstand, Caption  	   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[
+labelfont=bf, % Fette Beschriftungen
+font=footnotesize, % Schriftgröße für Beschriftungen
+]
+{caption}
+
+% Abbildungen
+\captionsetup[figure]{position=below} 
+\captionsetup[figure]{aboveskip=3mm} %  Abstand Bild-Bildunterschrift
+\captionsetup[figure]{belowskip=-2mm} % Abstand Bildunterschrift-Fließtext
+
+% Tabellen
+% Bei der Nutzung von "\captionabove" werden die Werte "aboveskip" und "belowskip" vertauscht; bitte nutzen Sie daher den Befehl "\caption" für Tabellenüberschriften
+\captionsetup[table]{position=top} 
+\captionsetup[table]{aboveskip=1.5mm} % Abstand: Fließtext-Tabellenüberschrift (im PDF gemessen=~7mm) | Anmerkung: mit dem Befehl "\captionabove" ändert sich die Reihenfolge der Tabellenüberschrift  in: Tabellenüberschrift-Tabelle
+\captionsetup[table]{belowskip=2.5mm} % Abstand: Tabellenüberschrift-Tabelle (im PDF gemessen=~3mm)| Anmerkung: mit dem Befehl "\captionabove" ändert sich die Reihenfolge der Tabellenüberschrift in: Fließtext-Tabellenüberschrift
+
+% Abstand Bild: Fließtext-Bild; Bildunterschrift-Fließtext
+% Abstand Tabelle: Fließtext-Tabellenüberschrift; Tabelle-Fließtext
+\setlength{\intextsep}{5.5mm plus0mm minus0mm} % (im PDF gemessen für Tabellen=~7mm; für Abbildungen=~5mm)
+\setlength{\textfloatsep}{7mm plus0mm minus0mm}
+
+% Bildunterschrift Subfloats
+\captionsetup[subfloat]{%
+	labelformat = empty,%
+	margin = 0pt,		% Einzug der Bildunterschrift von links
+	%	skip = 0pt,		% Abstand zwischen Bild und Bildunterschrift
+	aboveskip = 2mm,	% Abstand zwischen Bild und Bildunterschrift
+	belowskip = 0mm,	% Abstand zwischen Bildunterschrift und der nächsten Bildreihe sowie zwischen Bildunterschrift und Unterschrift der Abbildung / da es hier zu einer Überschneidung der Befehle "\captionsetup[subfloat]{belowskip}" und "\captionskip[figure]{skip}" kommt, muss der vertikale Abstand zwischen den Bildreihen mit dem Befehl "\vspace{3mm}" gesetzt werden
+	%	font = {footnotesize,rm},		%
+	%	labelfont = {footnotesize,bf},	%
+	format = hang, 		% Zweite und weitere Zeilen einrücken (an die erste ausrichten)
+	indention = 0em,	% Einruecken der Beschriftung
+	labelsep = space,	% "period, space, quad, newline"
+	justification = RaggedRight,	% Flattersatz mit Silbentrennung
+	%	justification = raggedright,	% Flattersatz ohne Silbentrennung
+	%	justification = centering,	% Zentriert
+	%	justification = justified,	% Blocksatz
+	singlelinecheck = true, % "false" (true = bei einer Zeile immer zentrieren)
+	position = auto,		% "top, bottom"
+	labelformat = parens	% "simple, empty" = wie die Bezeichnung gesetzt wird
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  			Gleitobjekte				   %%%
+%%%			"{figure}", "{table}"		   	   %%%
+%%%				Layout, Größe  	   			   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Mindestfüllgrad einer Seite mit einem Gleitobjekt
+\renewcommand{\floatpagefraction}{0.7}
+
+% Maximale Größe eines Gleitobjekts am unteren Seitenrand
+\renewcommand{\topfraction}{0.8}
+
+% Maximale Größe eines Gleitobjekts am oberen Seitenrand
+\renewcommand{\bottomfraction}{0.8}
+
+% Mögliche Abstandsvergrößerung innerhalb einer Zeile bei unschönem Zeilenumbruch
+\setlength{\emergencystretch}{4pt}
+
+% Mindestanteil an Text auf einer Seite mit Gleitobjekt
+\renewcommand{\textfraction}{0.1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  				Zeilenabstand			   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Zeilenabstände auf 1-fach festlegen
+%\usepackage[singlespacing]{setspace}
+
+% Zeilenabstände auf 1,15-fach festlegen
+\usepackage{setspace}
+\setstretch{1.15}
+
+% Zeilenabstände auf 1,2-fach festlegen
+%\usepackage{setspace}
+%\setstretch{1.2}
+
+% Zeilenabstände auf 1,5-fach festlegen
+%\usepackage[onehalfspacing]{setspace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% 		Inhaltsverzeichnis		   		   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Inhaltsverzeichnis richtig darstellen
+\usepackage[titles]{tocloft}
+
+% Auch bei den Kapiteln Punkte darstellen
+\renewcommand{\cftchapdotsep}{\cftdotsep}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftchapdotsep}}
+
+% Seitenzahlen bei Kapitel in serifenloser Schriftart darstellen
+\renewcommand{\cftchappagefont}{\fontfamily{phv}\normalsize\bfseries}
+
+% Verzeichnisse aktualisieren
+%Fonts im Inhaltsverzeichnis
+\renewcommand\cftchapfont{\fontfamily{phv}\normalsize\bfseries}
+\renewcommand\cftsecfont{\fontfamily{phv}\fontsize{11}{11}}
+
+%Fonts in Kapiteln und sections...
+%\renewcommand\cftchappagefont{\fontfamily{phv}\normalsize\bfseries}
+\renewcommand\cftsecpagefont{\fontfamily{phv}\fontsize{11}{11}}
+
+\usepackage{makeidx}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% 			Überschriften			  	   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Auch die 4. Ebene nummerieren (subsubsection)
+\setcounter{secnumdepth}{4} 
+
+% Bis Ebene 3 (subsection) im Inhaltsverzeichnis anzeigen
+\setcounter{tocdepth}{2}
+
+% Schriftarten und -größen für die Überschriften vorgeben
+\addtokomafont{chapter}{\fontfamily{phv}\fontsize{18}{20}\bfseries} 		% z. B. "2 Stand der Technik"
+\addtokomafont{section}{\fontfamily{phv}\fontsize{14}{16}\bfseries}			% z. B. "2.1 Literatur und Forschung"
+\addtokomafont{subsection}{\fontfamily{phv}\fontsize{12}{14}\bfseries}		% z. B. "2.1.1 Disziplinäre Entwicklung"
+\addtokomafont{subsubsection}{\fontfamily{phv}\fontsize{10}{12}\bfseries}	% z. B. "2.1.1.1 Genese wissenschaftlicher" Konzepte"
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% 		Überschriften auslinieren 	   	   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Horizonaler Abstand zwischen Nummerierung und Überschrift
+\renewcommand*{\chapterformat}{\makebox[1.3cm][l]{\thechapter\autodot}}
+\renewcommand*{\sectionformat}{\makebox[1.3cm][l]{\thesection\autodot}}
+\renewcommand*{\subsectionformat}{\makebox[1.3cm][l]{\thesubsection\autodot}}
+\renewcommand*{\subsubsectionformat}{\makebox[1.3cm][l]{\thesubsubsection\autodot}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% 	Bezeichnungen: Abbildung / Tabelle 	   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Bezeichnungsnamen angeben
+\addto\captionsngerman{\renewcommand{\figurename}{Abbildung}}
+\addto\captionsngerman{\renewcommand{\tablename}{Tabelle}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% 				Schriftgröße			   %%%
+%%%			Abbildungen, Kopf- Fußzeilen, 	   %%%
+%%%		 	Seitenzahl,Textfarbe   	   		   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Größen der Beschriftungen vorgeben
+%\addtokomafont{caption}{\footnotesize}
+%\setkomafont{captionlabel}{\footnotesize}
+
+% Größe der Kopf- und Fußzeile vorgeben
+\setkomafont{pageheadfoot}{\footnotesize} 
+
+% Größe der Seitenzahl
+\setkomafont{pagenumber}{\normalsize}
+
+% Farben im Dokument zulassen
+\usepackage{color}
+
+% Textfarbe schwarz definieren
+\color[cmyk]{0,0,0,1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% 			Schriftarten			  	   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% 			Mit Serifen			  	   	   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Nimbus 15 Serif
+% Beispiele zum Schriftbild (Typografie)siehe: https://tug.org/FontCatalogue/nimbus15serif/
+\usepackage{nimbusserif}
+
+% URW Nimbus Roman (ähnlich Times New Roman)
+% Beispiele zum Schriftbild (Typografie)siehe: https://tug.org/FontCatalogue/urwnimbusroman/ 
+%\usepackage{mathptmx}
+
+% Utopia Regular with Fourier
+% Beispiele zum Schriftbild (Typografie)siehe: https://tug.org/FontCatalogue/utopia-fouriermath/ 
+%\usepackage{fourier}
+
+% Utopia Regular with Math Design
+% Beispiele zum Schriftbild (Typografie)siehe: https://tug.org/FontCatalogue/utopia-mathdesign/ \usepackage[adobe-utopia]{mathdesign}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% 			Ohne Serifen		  	   	   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% URW Nimbus Sans
+% Beispiele zum Schriftbild (Typografie)siehe: https://tug.org/FontCatalogue/urwnimbussans/ 
+%\usepackage[scaled]{helvet}
+%\renewcommand*\familydefault{\sfdefault}
+
+% Nimbus 15 Sans
+% Beispiele zum Schriftbild (Typografie)siehe: https://tug.org/FontCatalogue/nimbus15sans/ 
+%\usepackage{nimbussans}
+%\renewcommand*\familydefault{\sfdefault}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%        			Microtype			   	   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \usepackage[stretch=10,shrink=10]{microtype} % Verhindert Unschärfe und Verschwimmen der Schrift und reduziert die Anzahl der Badboxes (underfull/overfull); muss nach der Schriftart eingebunden werden
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%        			Kopfzeile			   	   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Paket für Kopf- und Fußzeilen
+\usepackage[
+markcase=ignoreuppercase,
+automark,
+autooneside=false
+]{scrlayer-scrpage}
+%\usepackage[nouppercase]{scrpage2} % Obsoletes Paket, das durch das Paket "\usepackage{scrlayer-scrpage}" ersetzt wurde
+
+% Linie in der Kopfzeile definieren 
+% "Das Element [headsepline] wird nach \normalfont und nach den Elementen pageheadfoot und pagehead angewandt." (Kohm 2020: 268)
+\KOMAoptions{headsepline=0.5pt}
+%\setheadsepline{0.5pt} % Befehlszeile für das obsolete Paket "\usepackage{scrpage2}"
+
+% Keine Kopf/Fußzeile auf leeren Seiten
+%\usepackage{emptypage} % Usage of package `emptypage' together(scrbook) with a KOMA-Script class is not recommended
+
+% Abstand zwischen Textkörper und Linie in der Kopfzeile
+\setlength{\headsep}{8mm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% 				Notizen		  	   	   	   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Erlaubt das Einfügen von Notizen
+%\usepackage{todonotes}
+
+% Deaktiviert alle eingefügten Notizen
+%\usepackage[disable]{todonotes}
+
+% Einfügen von Notizen im Fließtext
+%\todo[inline]{Das ist eine Notiz}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% 			URLs/links					   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Darstellung URLs mit Zeilenumbruch
+\usepackage[hyphens]{url}
+
+% Zeilenumbrüche in URLs nach folgenden Zeichen
+\appto\UrlBreaks{\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z\do\/\do\.}
+
+% Darstellung und Verlinkungen im pdf-Dokument einstellen
+\usepackage[hidelinks,% Links als normaler Text darstellen
+	pdfpagemode = UseNone,% Lesezeichen im PDF-Reader nicht anzeigen
+	pdfpagelayout = TwoColumnRight,% Seitenanzeige des PDF-Dokuments angeben
+	pdfauthor = {\autor},% Autor des PDF-Dokuments
+	pdftitle = {\pdftitle}]% Titel des PDF-Dokuments
+	{hyperref}
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% 	Einstellungen weiterer Pakete		   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Ansicht Literaturverzeichnis
+%\bibliographystyle{plaindin}
+
+% Einbinden von Bildern ermöglichen
+\usepackage{graphicx}	
+
+% Gedrehte Objekte ermöglichen
+\usepackage{rotating}
+
+% Erweiterte Tabellenumgebung
+\usepackage{tabularx}
+
+% Erweiterte Flattersatz-Kommandos
+\usepackage{ragged2e}
+
+% Linksbündiger Flattersatz in den Bezeichnungen
+%\usepackage[justification=RaggedRight]{caption}
+%\usepackage[justification=justified]{caption}
+%\captionsetup[subfigure]{justification=RaggedRight}
+
+% Neuer Spaltentyp "L" mit Breitenangabe für linksbündigen Flattersatz
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+
+% Mathematische Symbole
+\usepackage{amsmath,amssymb}
+
+% Zeilen in Tabellen können verbunden werden
+\usepackage{multirow}
+
+% Zusätzliche Textsymbole zur Verfügung stellen
+\usepackage{textcomp}
+
+% Operatorensymbole definieren
+\newcommand{\real}{\operatorname{Re}}				% Realteil
+\newcommand{\opdiv}{\operatorname{div}}				% Divergenzoperator
+\newcommand{\rot}{\operatorname{rot}}				% Rotationsoperator
+\newcommand{\grad}{\operatorname{grad}}				% Gradientenoperator
+\newcommand{\imag}{\operatorname{Im}}				% Imaginärteil
+\newcommand{\imein}{\operatorname{j}}				% Imaginäre Einheit "j"
+
+% Erweiterte Listenanweisungen
+\usepackage{etoolbox}
+
+% Einzug im Abbildungsverzeichnis zu null setzen
+\renewcommand{\cftfigindent}{0cm}
+
+% Einzug im Tabellenverzeichnis zu null setzen
+\renewcommand{\cfttabindent}{0cm}
+	
+% Deutsches Abkürzungsverzeichnis erstellen
+%\usepackage[english]{nomencl}
+\usepackage[german]{nomencl}
+
+% Befehl für einen Eintrag im Abkürzungsverzeichnis in "\sym" umbennen
+\let\sym\nomenclature
+
+% Name des Abkürzungsverzeichnis ändern
+\renewcommand{\nomname}{Abkürzungs- und Symbolverzeichnis}
+
+% Spaltenbreite der Formelzeichen auf "20 %" der Textbreite setzen
+\setlength{\nomlabelwidth}{.2\textwidth}
+
+% Einheiten in die Bezeichnung mit aufnehmen und rechtsbündig setzen
+\newcommand{\nomunit}[1]{\renewcommand{\nomentryend}{\hspace*{\fill}#1}}
+
+% Zeilenabstände verkleineren auf normalen Textabstand
+\setlength\nomitemsep{-\parsep}
+
+% Abkürzungsverzeichnis erzeugen
+\makenomenclature
+
+% Weitere Verzeichnisse erzeugen
+\makeindex
+
+\AtBeginDocument{ % 
+  \newcaptionname{ngerman}\equationname{Formel} % 
+  \newcaptionname{ngerman}\listequationname{Formelverzeichnis} % 
+  \addtocontents{toc}{\protect\activateonlyattoc} % Z. B. für Umbrüche von langen Überschriften im Inhaltsverzeichnis mit dem Befehl \onlyattoc{\protect\\} (Beispiel: \chapter{Lange Kapitelüberschriften und der manuelle Zeilenumbruch \onlyattoc{\protect\\} für eine saubere Darstellung im Text})
+}
+
+\DeclareRobustCommand*{\onlyattoc}[1]{} % Z. B. für Umbrüche von langen Überschriften im Inhaltsverzeichnis mit dem Befehl \onlyattoc{\protect\\} (Beispiel: \chapter{Lange Kapitelüberschriften und der manuelle Zeilenumbruch \onlyattoc{\protect\\} für eine saubere Darstellung im Text})
+\newcommand*{\activateonlyattoc}{\DeclareRobustCommand*{\onlyattoc}[1]{##1}}% Z. B. für Umbrüche von langen Überschriften im Inhaltsverzeichnis mit dem Befehl \onlyattoc{\protect\\} (Beispiel: \chapter{Lange Kapitelüberschriften und der manuelle Zeilenumbruch \onlyattoc{\protect\\} für eine saubere Darstellung im Text})
+
+\DeclareNewTOC[ 
+  tocentryindent=0pt,
+  tocentrynumwidth=2em,
+  type=equation,
+  name={Gl.}, 
+  types=equations, 
+  listname={Formelverzeichnis}, 
+]{equ} 
+\newcommand{\equationentry}[2][\theequation]{ % 
+  \addxcontentsline{equ}{equation}[{#1}]{\kern 1em #2} % 
+} 
+\BeforeStartingTOC[equ]{\def\autodot{:}}
+
+
+
+% Literaturverzeichnis
+%-----------------------
+%
+% Kohm 2020: Kohm, Markus; Neukamp, Frank; Kielhorn, Axel (2020): Die Anleitung. KOMA-Script. Markus Kohm. 2020-03.12. (Online)
