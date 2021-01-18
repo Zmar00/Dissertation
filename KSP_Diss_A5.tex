@@ -98,6 +98,7 @@ An-ten-ne
 %%%			Literaturverzeichnis	   		   %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Das Natbib-Paket enthält zwei grundlegende Zitierbefehle: \ citet und \ citep für Textzitate bzw. Zitate in Klammern.
 % Zitieren aus der Bibliografie "Externe_Literatur.bib": "\citet{<ID>}" bzw. "\citep{<ID>}"
 % Zitieren aus der Bibliografie "Eigene_Journal_Papers.bib": "\citetjournal{<ID>}" bzw. "\citepjournal{<ID>}"
 % Zitieren aus der Bibliografie "Eigene_Konferenz_Papers.bib": "\citeconference{<ID>}" bzw. "\citeconference{<ID>}"
@@ -123,21 +124,20 @@ round,% Runde Klammern
 {}% Interpunktion vor Jahr
 {,}% Interpunktion zwischen verschiedenen Erscheinungsjahren von Titeln des gleichen Autors
 %
-% Das natbib-Paket enthält zwei grundlegende Zitierbefehle: \ citet und \ citep für Textzitate bzw. Zitate in Klammern.
 % Die folgenden Beispiele sind entnommen aus Patrick W. Daly (2010) "Natural Sciences Citations and References. Author-Year and Numerical Schemes"
 %\citet{jon90} --> Jones et al. (1990)
 %\citet[chap.~2]{jon90} --> Jones et al. (1990, chap. 2)
 %\citep{jon90} --> (Jones et al., 1990)
 %\citep[chap.~2]{jon90} --> (Jones et al., 1990, chap. 2)
 %\citep[see][]{jon90} --> (see Jones et al., 1990)
-%\citep[see][chap.~2]{jon90} ⇒ (see Jones et al., 1990, chap. 2)
-%\citet*{jon90} ⇒ Jones, Baker, and Williams (1990)
-%\citep*{jon90} ⇒ (Jones, Baker, and Williams, 1990)
+%\citep[see][chap.~2]{jon90} --> (see Jones et al., 1990, chap. 2)
+%\citet*{jon90} --> Jones, Baker, and Williams (1990)
+%\citep*{jon90} --> (Jones, Baker, and Williams, 1990)
 %
-%\citet{jon90,jam91} ⇒ Jones et al. (1990); James et al. (1991)
-%\citep{jon90,jam91} ⇒ (Jones et al., 1990; James et al. 1991)
-%\citep{jon90,jon91} ⇒ (Jones et al., 1990, 1991)
-%\citep{jon90a,jon90b} ⇒ (Jones et al., 1990a,b)
+%\citet{jon90,jam91} --> Jones et al. (1990); James et al. (1991)
+%\citep{jon90,jam91} --> (Jones et al., 1990; James et al. 1991)
+%\citep{jon90,jon91} --> (Jones et al., 1990, 1991)
+%\citep{jon90a,jon90b} --> (Jones et al., 1990a,b)
 
 \usepackage[resetlabels]{multibib} % Jede Bibliographie beginnt bei Zähler [1], sofern als Bibliografiestil "\bibliographiestyle{plain}" gewählt ist
 %\usepackage{multibib} % Der Zähler der Bibliographien wird nicht zurückgesetzt (fortlaufende Zählung beginnend bei [1] in der Bibliografie"Journalartikel" und fortlaufend in der Bibliografie "Konferenzbeiträge"), sofern als Bibliografiestil "\bibliographiestyle{plain}" gewählt ist, bei einem anderen Bibliografiestil, z.B. "\bibliographystyle{alpha} wird kein Zähler verwendet
