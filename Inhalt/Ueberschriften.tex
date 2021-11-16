@@ -1,0 +1,52 @@
+% \chapter{Überschriften}
+
+% Stehen zwei Überschriften direkt untereinander, muss die Autorin oder der Autor zwischen den Überschriften manuell eine Anpassung des vertikalen Abstands mit dem Befehl \glqq vspace\grqq{} vornehmen. Für die folgende Aneinanderreihung der Überschriften entnehmen Sie den vertikalen Abstand bitte wie folgt:
+
+% \begin{itemize}
+
+% \item \raggedright Zwischen \glqq chapter\grqq{} und \glqq section\grqq{} bitte mit dem Befehl \glqq vspace\grqq{} einen zusätzlichen vertikalen Abstand einfügen von \hbox{-}3~mm. 
+% \begin{Verbatim}
+% \chapter{Überschrift Ebene Chapter}
+% \vspace{-3mm}
+% \section{Überschrift Ebene Section}
+% \end{Verbatim}
+% (Sollabstand: 10~mm, gemessen von der Grundlinie der Überschrift \glqq chapter\grqq{} zur H-Linie der Überschrift \glqq section\grqq{}) 
+
+% \item \raggedright Zwischen \glqq section\grqq{} und \glqq subsection\grqq{} bitte mit dem Befehl \glqq vspace\grqq{} einen zusätzlichen vertikalen Abstand einfügen von 2~mm. 
+% \begin{Verbatim}
+% \section{Überschrift Ebene Section}
+% \vspace{2mm}
+% \subsection{Überschrift Ebene Subsection}
+% \end{Verbatim}
+% (Sollabstand: 10~mm, gemessen von der Grundlinie der Überschrift \glqq section\grqq{} zur H-Linie der Überschrift \glqq subsection\grqq{})
+
+% \item \raggedright Zwischen \glqq subsection\grqq{} und \glqq subsubsection\grqq{} bitte mit dem Befehl \glqq vspace\grqq{} einen zusätzlichen vertikalen Abstand einfügen von 3~mm. 
+% \begin{Verbatim}
+% \subsection{Überschrift Ebene Subsection}
+% \vspace{3mm}
+% \subsubsection{Überschrift Ebene Subsubsection}
+% \end{Verbatim}
+% (Sollabstand: 10~mm, gemessen von der Grundlinie der Überschrift \glqq subsection\grqq{} zur H-Linie der Überschrift \glqq subsubsection\grqq{}. 
+
+% \end{itemize}
+
+% % Für die exakte Angabe des Befehls \glqq vspace\grqq{} mit den entsprechenden Werten sehen Sie bitte in die Datei \glqq content\_vorlage/ueberschriften.tex\grqq{}. 
+% Das Ergebnis mit den entsprechenden vertikalen Abständen zwischen den Überschriften sehen Sie in Kapitel \ref{chap:UeberschriftenEbenen} (\glqq \nameref{chap:UeberschriftenEbenen}\grqq{}) auf Seite \pageref{chap:UeberschriftenEbenen} in dieser PDF-Datei.
+
+
+
+\chapter{Überschrift Ebene 1 (chapter)}
+\label{chap:UeberschriftenEbenen}
+% Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean co~mmodo ligula eget dolor. Aenean massa.
+% \vspace{-3mm} % Folgt kein Text nach der Überschrift, muss der Abstand zur nächsten Überschrift manuell angepasst werden
+
+\section{Überschrift Ebene 2 (section)}
+% Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean co~mmodo ligula eget dolor. Aenean massa.
+\vspace{2mm} % Folgt kein Text nach der Überschrift, muss der Abstand zur nächsten Überschrift manuell angepasst werden 
+
+\subsection{Überschrift Ebene 3 (subsection)}
+% Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean co~mmodo ligula eget dolor. Aenean massa.
+\vspace{3mm} % Folgt kein Text nach der Überschrift, muss der Abstand zur nächsten Überschrift manuell angepasst werden
+
+\subsubsection{Überschrift Ebene 4 (subsubsection)}
+% Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean co~mmodo ligula eget dolor. Aenean massa.

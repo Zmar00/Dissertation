@@ -1,69 +1,74 @@
-% Version 1.1.0 DE
+% Version 1.2.0 DE
 %
 % Seitenbegrenzungen anzeigen
 %\usepackage{showframe}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% 				Informationen			  %%%%
+%%% 		Manuelle Zeilenumbrüche!		  %%%%
+%%% 		im Abbildungsverzeichnis!		  %%%%
+%%% 		und Tabellenverzeichnis!		  %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Zeilenumbrüche manuell in \listoffigures und \listoftables setzen mit "\protect\\" (ohne Anführungszeichen) im optionalen Parameter des "\caption"-Befehls
 % Beispiel: 
 %\caption[Exterior view of the KIT library. Consetetur sadipscing elitr,\protect\\ sed diam nonumy eirmod tempor invidunt ut labore]{Exterior view of the KIT library. Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore}
 
-% Geschütztes Leerzeichen: "~" (ohne Anführungszeichen)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% 				Sonderzeichen!			  %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Geschütztes Leerzeichen: ~ 
+% Geschütztes schmales Leerzeichen: \,
+% Backslash: \textbackslash
+% Prozentzeichen: \%
+% Et-Zeichen: \&
+% Zirkumflex: \^
+% Tilde: \~
+% Dollar: \$
+% Raute: \#
+% Unterstrich: \_
+% Geschweifte Klammern: \{
+% Geschützter Trennstrich (Divis): "~	% Erfordert das Paket "\usepackage[ngerman]{babel}"
+% Geschützter Trennstrich (Divis) Alternative: \hbox{-}
+% Bedingter Trennsricht (Divis): \-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% 	Allgemeine Einstellungen			  %%%%
+%%% 	Allgemeine Einstellungen!			  %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Seitenränder einstellen
 \setlength{\topskip}{10.5pt} % Verhindern einer Fehlermeldung (Zusatz: siehe Kohm 2020: S. 36, Tabelle 2.1 "Satzspiegelmaße in Abhängigkeit von DIV bei A4 ohne Berücksichtigung von \topskip oder BCOR)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%     	Eingabe, Ausgabe, Umlaute 		   %%%
+%%%        		Skalierung!					  %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Laden der Sprachpakete (die optionalen Parameter "ngerman" für die neue deutsche Rechtschreibung und "english" sind bereits in den optionalen Parametern der "\documentclass" gesetzt)
-\usepackage{babel}
-
-% Eingabe von Umlauten (ä, ö, ü sowie ß) durch den Parameter [utf8]
-\usepackage[utf8]{inputenc}
-
-% Ausgabe von Umlauten
-\usepackage[T1]{fontenc}
+% Bitte skalieren Sie, entsprechend der Seitenanzahl ihres Dokuments, die Seitenränder wie folgt (siehe optionale Parameter im folgenden Paket "\usepackage{geometry}":
+% - bis 199 Seiten ("inner": 20mm, "outer": 15-18mm) >>> textwidth=113mm
+% - 200 bis 399 Seiten ("inner": 23mm, "outer": 15-18mm) >>> textwidth=110mm
+% - ab 400 Seiten ("inner": 25mm, "outer": 15mm) >>> textwidth=108mm
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%        		Skalierung					  %%%%
+%%%        		Papierformat A5!			   %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Bitte skalieren Sie, entsprechend der Seitenanzahl ihres Dokuments, die Seitenränder wie folgt:
-
-% - bis 199 Seiten (innen: 20mm, außen: 15-18mm) >>> textwidth=113mm
-% - 200 bis 399 Seiten (innen: 23mm, außen: 15-18mm) >>> textwidth=110mm
-% - ab 400 Seiten (innen: 25mm, außen: 15mm) >>> textwidth=108mm
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%        		Papierformat (A5)			   %%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Seitengröße auf "a4paper" oder "a5paper" einstellbar (1. oder 2. "usepackage" wählen)
 % Hinweis: Die Seitenränder für die Skalierung (s. o. "Skalierung") kann man mithilfe des Pakets "geometry" verwalten, siehe bitte hierzu die entsprechende Dokumentation unter: http://ftp.fau.de/ctan/macros/latex/contrib/geometry/geometry.pdf
 
-% (1)
+% (1) DIN-A5
 \usepackage[%
-a5paper,%
-headheight=1.5\baselineskip,%
-top=25mm,%
-inner=20mm,%
-outer=15mm,%
-%lines=38,%
-%textwidth=113mm,%
-footnotesep=7mm,%
+a5paper,% Papierformat. Andere: "papersize={17cm,24cm}"
+headheight=1.5\baselineskip,% Linie unterhalb der Kopfzeile
+top=25mm,% Abstand vom oberen Rand
+inner=20mm,% Abstand vom inneren Rand
+outer=15mm,% Abstand vom äußeren Rand
+%lines=38,% Anzahl der Linien. Auskommentierung empfohlen, da es zu Problemen bei der korrekten Berechnung führt
+%textwidth=113mm,% Breite des Satzspiegels. Auskommentierung empfohlen, da es zu Problemen bei der korrekten Berechnung führt
+footnotesep=7mm,% Vertikaler Abstand zwischen Satzspiegel und Fußnotenlinie
 heightrounded=true%
 ]{geometry}
 
-% (2)
+% (2) DIN-A4
+% Bitte beachten: Beim Umstellen auf ein anderes Format müssen die Überschriften und Schriftgrößen angepasst werden. Siehe dazu das KSP-Manuskripthandbuch bzw. die KSP-Basics
 %\usepackage[
 %a4paper,
 %headheight=1.5\baselineskip,
@@ -76,31 +81,45 @@ heightrounded=true%
 
 %\usepackage[a4paper,top=33mm,bottom=32mm,outer=25mm,inner=35mm]{geometry}
 
+
+% (3) 17x24 cm
+% Bitte beachten: Beim Umstellen auf ein anderes Format müssen die Überschriften und Schriftgrößen angepasst werden. Siehe dazu das KSP-Manuskripthandbuch bzw. die KSP-Basics
+% \usepackage[%
+% papersize={17cm,24cm},% Papierformat
+% headheight=1.5\baselineskip,% Linie unterhalb der Kopfzeile
+% top=25mm,% Abstand vom oberen Rand
+% heightrounded=true,%
+% inner=20mm,% Abstand nach innen
+% outer=15mm,% Abstand nach außen
+% % textwidth=113mm,% Breite des Satzspiegels
+% footnotesep=7mm% Vertikaler Abstand zwischen Satzspiegel und Fußnotenlinie
+% ]{geometry}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%        			Fußzeile			   	   %%%
+%%%        			Fußzeile!			   	   %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Abstand zwischen Textkörper und Unterkante Fußzeile (Seitenzahlen)
+% Abstand zwischen Textkörper/Satzspiegel und Unterkante Fußzeile (Seitenzahlen)
 \setlength{\footskip}{10mm}
 
 % Abstand zwischen Fließtext und Fußnotentrennlinie 
 \setlength{\skip\footins}{20pt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%        		Fußnote					   	   %%%
+%%%        		Fußnote!				   	   %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % (1) Position und Größe der Fußnoten bei 2-stelligen Fußnotennummern
 \deffootnote[1.8em]{1.8em}{0em}{\makebox[1.7em][l]{\textsuperscript{\thefootnotemark\ }}}
 
-% (2) Bitte wählen Sie für 3-stellige Fußnotennummern den folgenden Befehl und deaktivieren Sie (1), indem Sie den vorhergehenden Befehl "\deffootnote{1.7em}{0em}{\makebox[1.7em][l]{\thefootnotemark}}" auskommentieren
+% (2) Bitte wählen Sie für 3-stellige Fußnotennummern den folgenden Befehl und deaktivieren Sie (1), indem Sie den vorhergehenden Befehl "\deffootnote{1.7em}{0em}{\makebox[1.7em][l]{\thefootnotemark}}" mit % auskommentieren
 %\deffootnote{2.2em}{0em}{\makebox[2.2em][l]{\thefootnotemark}}
 
 % Verhindert das Fortsetzen von Fussnoten auf der gegenüberliegenden Seite
 \interfootnotelinepenalty=10000 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%  				Absatz				  	   %%%
+%%%  				Absatz!				  	   %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Zeilen auf der Seite verteilen (Es wird kein Ausgleich des unteren Seitenrandes durch Dehnung der Absatzabstände durchgeführt) 
@@ -111,6 +130,9 @@ heightrounded=true%
 
 % Vertikaler Abstand zwischen den Absätzen
 \setlength{\parskip}{2.5mm}
+
+% Änderung der Abstände zwischen den Einträgen
+% \setlength{\parskip}{0.3\baselineskip plus 0.15\baselineskip minus 0.15\baselineskip} 
 
 % Schusterjungen (einzelne Zeile unten auf der Seite) unterdrücken
 \clubpenalty = 10000 
@@ -123,17 +145,15 @@ heightrounded=true%
 \brokenpenalty = 10000
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%  			Gleitobjekte				   %%%
-%%%			Abbildungen	Tabellen			   %%%
-%%%			"{figure}", "{table}"		   	   %%%
-%%%		Beschriftungen, Abstand, Caption  	   %%%
+%%%  		Caption! Beschriftungen!		   	   %%%
+%%%			Abbildungen! (figure) 			   %%%
+%%%			Tabellen! (table)			   	   %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[
-labelfont=bf, % Fette Beschriftungen
-font=footnotesize, % Schriftgröße für Beschriftungen
-]
-{caption}
+\usepackage[%
+labelfont=bf,% Fette Beschriftungen für die Bezeichnung "Abbildung" und "Tabelle"
+font=footnotesize% Schriftgröße für Beschriftungen
+]{caption}
 
 % Abbildungen
 \captionsetup[figure]{position=below} 
@@ -143,38 +163,41 @@ font=footnotesize, % Schriftgröße für Beschriftungen
 % Tabellen
 % Bei der Nutzung von "\captionabove" werden die Werte "aboveskip" und "belowskip" vertauscht; bitte nutzen Sie daher den Befehl "\caption" für Tabellenüberschriften
 \captionsetup[table]{position=top} 
-\captionsetup[table]{aboveskip=1.5mm} % Abstand: Fließtext-Tabellenüberschrift (im PDF gemessen=~7mm) | Anmerkung: mit dem Befehl "\captionabove" ändert sich die Reihenfolge der Tabellenüberschrift  in: Tabellenüberschrift-Tabelle
+\captionsetup[table]{aboveskip=0.8mm} % Abstand: Fließtext-Tabellenüberschrift (im PDF gemessen=~7mm) | Anmerkung: mit dem Befehl "\captionabove" ändert sich die Reihenfolge der Tabellenüberschrift  in: Tabellenüberschrift-Tabelle
+% \captionsetup[table]{aboveskip=1.5mm} % Abstand: Fließtext-Tabellenüberschrift (im PDF gemessen=~7mm) | Anmerkung: mit dem Befehl "\captionabove" ändert sich die Reihenfolge der Tabellenüberschrift  in: Tabellenüberschrift-Tabelle
 \captionsetup[table]{belowskip=2.5mm} % Abstand: Tabellenüberschrift-Tabelle (im PDF gemessen=~3mm)| Anmerkung: mit dem Befehl "\captionabove" ändert sich die Reihenfolge der Tabellenüberschrift in: Fließtext-Tabellenüberschrift
 
+% Intextsep! und Textfloat!
 % Abstand Bild: Fließtext-Bild; Bildunterschrift-Fließtext
 % Abstand Tabelle: Fließtext-Tabellenüberschrift; Tabelle-Fließtext
-\setlength{\intextsep}{5.5mm plus0mm minus0mm} % (im PDF gemessen für Tabellen=~7mm; für Abbildungen=~5mm)
-\setlength{\textfloatsep}{7mm plus0mm minus0mm}
+\setlength{\intextsep}{5.5mm plus0mm minus0mm} % Abstand für Gleitobjekte, die mit dem Parameter "[h]" platziert wurden (im PDF gemessen für Tabellen=~8mm; für Abbildungen=~6mm)
+\setlength{\textfloatsep}{5.5mm plus0mm minus0mm} % Abstand für Gleitobjekte, die mit den Parametern "[t]" oder "[b]" platziert wurden
+% \setlength{\textfloatsep}{7mm plus0mm minus0mm}
 
-% Bildunterschrift Subfloats
+% Bildunterschrift für Subfloat!
 \captionsetup[subfloat]{%
-	labelformat = empty,%
-	margin = 0pt,		% Einzug der Bildunterschrift von links
-	%	skip = 0pt,		% Abstand zwischen Bild und Bildunterschrift
-	aboveskip = 2mm,	% Abstand zwischen Bild und Bildunterschrift
-	belowskip = 0mm,	% Abstand zwischen Bildunterschrift und der nächsten Bildreihe sowie zwischen Bildunterschrift und Unterschrift der Abbildung / da es hier zu einer Überschneidung der Befehle "\captionsetup[subfloat]{belowskip}" und "\captionskip[figure]{skip}" kommt, muss der vertikale Abstand zwischen den Bildreihen mit dem Befehl "\vspace{3mm}" gesetzt werden
-	%	font = {footnotesize,rm},		%
-	%	labelfont = {footnotesize,bf},	%
-	format = hang, 		% Zweite und weitere Zeilen einrücken (an die erste ausrichten)
-	indention = 0em,	% Einruecken der Beschriftung
-	labelsep = space,	% "period, space, quad, newline"
-	justification = RaggedRight,	% Flattersatz mit Silbentrennung
-	%	justification = raggedright,	% Flattersatz ohne Silbentrennung
-	%	justification = centering,	% Zentriert
-	%	justification = justified,	% Blocksatz
-	singlelinecheck = true, % "false" (true = bei einer Zeile immer zentrieren)
-	position = auto,		% "top, bottom"
-	labelformat = parens	% "simple, empty" = wie die Bezeichnung gesetzt wird
+	labelformat=empty,%
+	margin=0pt,% Einzug der Bildunterschrift von links
+	% skip=0pt,% Abstand zwischen Bild und Bildunterschrift
+	aboveskip=2mm,% Abstand zwischen Bild und Bildunterschrift
+	belowskip=0mm,% Abstand zwischen Bildunterschrift und der nächsten Bildreihe sowie zwischen Bildunterschrift und Unterschrift der Abbildung / da es hier zu einer Überschneidung der Befehle "\captionsetup[subfloat]{belowskip}" und "\captionskip[figure]{skip}" kommt, muss der vertikale Abstand zwischen den Bildreihen mit dem Befehl "\vspace{3mm}" gesetzt werden
+	% font={footnotesize,rm},%
+	% labelfont={footnotesize,bf},%
+	% format=hang,% Zweite und weitere Zeilen einrücken (an der ersten Zeile ausrichten)
+	indention=0em,% Einruecken der Beschriftung
+	labelsep=space,% "period, space, quad, newline"
+	justification=RaggedRight,% Flattersatz mit Silbentrennung
+	% justification=raggedright,% Flattersatz ohne Silbentrennung
+	% justification=centering,% Zentriert
+	% justification=justified,% Blocksatz
+	singlelinecheck=true,% "false" (true = bei einer Zeile immer zentrieren)
+	position=auto,% "top, bottom", "auto"
+	labelformat=parens% "simple, empty" = wie die Bezeichnung gesetzt wird
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%  			Gleitobjekte				   %%%
-%%%			"{figure}", "{table}"		   	   %%%
+%%%  			Gleitobjekte!				   %%%
+%%%			  "figure", "table"			   	   %%%
 %%%				Layout, Größe  	   			   %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -194,7 +217,7 @@ font=footnotesize, % Schriftgröße für Beschriftungen
 \renewcommand{\textfraction}{0.1}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%  				Zeilenabstand			   %%%
+%%%  				Zeilenabstand!			   %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Zeilenabstände auf 1-fach festlegen
@@ -212,68 +235,200 @@ font=footnotesize, % Schriftgröße für Beschriftungen
 %\usepackage[onehalfspacing]{setspace}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% 		Inhaltsverzeichnis		   		   %%%
+%%% 		Verzeichnisse!		     		   %%%
+%%% 		Inhaltsverzeichnis!	     		   %%%
+%%% 		Abbildungsverzeichnis!     		   %%%
+%%% 		Tabellenverzeichnis!     		   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% toc = table of contents (Inhaltsverzeichnis)
+% lof = list of figures (Abbildungsverzeichnis)
+% lot = list of tables (Tabellenverzeichnis)
+
+\makeatletter
+%
+% Automatischer Zeilenumbruch in Verzeichnissen (toc, lof, lot) bei langen Überschriften, horizontaler Abstand zum rechten Satzspiegelrand; "plus1fil": Keine Silbentrennung im Inhaltsverzeichnis, dadurch wird der Blocksatz für Verzeichnisse überwiegend außer Kraft gesetzt, weil keine Silbentrennung möglich
+\renewcommand\@tocrmarg{5em plus1fil}%neu
+% \renewcommand\@tocrmarg{5em}%neu
+% \renewcommand\@tocrmarg{4em plus1fil}%alt
+
+% Abstand der Seitenzahl im Inhaltsverzeichnis zum letzten Punkt der gepunkteten Linie
+\renewcommand\@pnumwidth{1em} % !Setzt bei 8pt oder 0em die Seitenzahl außerhalb des Satzspiegels (siehe "\usepackage{showframe}"!
+%
+% Ändert den Abstand zwischen den Punkten der gepunkteten Linie
+% \renewcommand*{\@dotsep}{1.5}% Default ist 4.5
+%
+% \renewcommand*\l@chapter{\@dottedtocline{0}{1.5em}{2em}}
+%
+% \renewcommand*\l@figure{\@dottedtocline{1em}{0em}{2.3em}}% Standard ist {1.5em}{0em}{2.3em}
+% \let\l@table\l@figure
+%
+\makeatother
+
+% Einzug der Kapitelnummer (tocindent) und Abstand zwischen Kapitelnummer und Kapiteltext/Überschrift im Inhaltsverzeichnis (tocnumwidth)
+\RedeclareSectionCommand[tocindent=0em,tocnumwidth=1.5em]{chapter}
+\RedeclareSectionCommand[tocindent=1.5em,tocnumwidth=1.9em]{section}
+\RedeclareSectionCommand[tocindent=3.4em,tocnumwidth=2.6em]{subsection}
+
+% Abbildungsverzeichnis! Einzug und Abstand
+\DeclareTOCStyleEntry[%
+dynnumwidth=true,% Bei Bedarf wird der Abstand von "numsep" erweitert (z.B. bei zwei Ziffern) 
+% entryformat=\sffamily\large,% Schriftart für Verzeichnis
+indent=0pt,% Einzug links
+% listname={Abbildungsverzeichnis},% Name des Abbildungsverzeichnisses
+numsep=1em,% Abstand zwischen Nummer links und Text (Abbildungstitel), behält den Abstand zur Seitenzahl bei
+numwidth=2em,% Abstand zwischen Nummer links und Text (Tabellentitel)
+% pagenumberbox=1em,% Abstand zwischen Nummer links und Text (Tabellentitel)
+% pagenumberformat=\sfamily\large,% Schriftart für Seitennummer
+% pagenumberwidth=1em,% Abstand zwischen Seitennummer und dem Text (links), schiebt auch die gepunktete Linie nach links
+% entrynumberformat=\gobble,%
+rightindent=4em,% Abstand zwischen Seitenzahl rechts und Text (Tabellentitel), Silbentrennung ist aktiv
+]{default}{figure}
+
+% Tabellenverzeichnis! Einzug und Abstand 
+\DeclareTOCStyleEntry[%
+% beforeskip=1.15em plus 1pt,%
+dynnumwidth=true,% Bei Bedarf wird der Abstand von "numsep" erweitert (z.B. bei zwei Ziffern)
+% entryformat=\sffamily\large,% Schriftart für Verzeichnis
+indent=0pt,% Einzug der Nummerierung links
+% linefill=\skillmon@chapter@dotfill,%
+% listname={Tabellenverezichnis},% Name des Tabellenverzeichnisses
+numsep=1em,% Abstand zwischen Nummer links und Text (Tabellentitel), behält den Abstand zu Seitenzahl bei
+numwidth=2em,% Abstand zwischen Nummer links und Text (Tabellentitel)
+% pagenumberbox=1em,% Abstand zwischen Nummer links und Text (Tabellentitel)
+% pagenumberwidth=1em,% Abstand zwischen Seitennummer und dem Text (links), schiebt auch die gepunktete Linie nach links
+% entryformat=\textbf%
+% pagenumberbox=\relax,%
+% pagenumberformat=\ssfamily\large,% Schriftart für Seitennummer
+% pagenumberformat=\usekomafont{tocentry},% Alternativ
+% entrynumberformat=\gobble,%
+rightindent=4em,% Abstand zwischen Seitenzahl rechts und Text (Tabellentitel), Silbentrennung ist aktiv
+]{default}{table}
+
+% Verzeichnis für Listings!
+% \DeclareTOCStyleEntry[%
+% % \DeclareTOCStyleEntries[%
+% % % dynnumwidth=true,% Bei Bedarf wird der Abstand von "numsep" erweitert (z.B. bei zwei Ziffern) 
+% % % % entryformat=\sffamily\large,% Schriftart für Verzeichnis
+% indent=0pt,% Einzug links
+% % % % listname={Abbildungsverzeichnis},% Name des Abbildungsverzeichnisses
+% % % numsep=1em,% Abstand zwischen Nummer links und Text (Abbildungstitel), behält den Abstand zur Seitenzahl bei
+% % % numwidth=3em,% Abstand zwischen Text und Seitennummer rechts
+% % % % pagenumberbox=1em,% Abstand zwischen Nummer links und Text (Tabellentitel)
+% % % % pagenumberformat=\sfamily\large,% Schriftart für Seitennummer
+% % % % pagenumberwidth=1em,% Abstand zwischen Seitennummer und dem Text (links), schiebt auch die gepunktete Linie nach links
+% % % % entrynumberformat=\gobble,%
+% % ]{default}{latex-Quellcode-Verzeichnis}
+% % ]{default}{lstlisting}
+
+\newcommand*{\gobble}[1]{} % Für die korrekte Darstellung des Abstandes zwischen Text und Seitennummer rechts in Verzeichnissen (Abbildung, Tabelle)
+
+% Schriftfamilie für Verzeichnisse (toc, lof, lot)
+% \addtokomafont{disposition}{\sffamily} % Schrift ohne Serifen
+% \addtokomafont{disposition}{\rmfamily} % Schrift mit Serifen
+
+% Seitenzahlen im Inhaltsverzeichnis für Überschriften der Kategorie "\chapter"
+\setkomafont{chapterentrypagenumber}{\rmfamily} % Seitenzahlen im Inhaltsverzeichnis mit Serifen
+% \setkomafont{chapterentrypagenumber}{\rmfamily\mdseries} % Seitenzahlen im Inhaltsverzeichnis mit Serifen, aber nicht fett
+
+% \addtokomafont{chapterentrypagenumber}{\normalfont\normalcolor\fontfamily{phv}\selectfont}
+
+% Schriftfamilie für Überschriften der Kategorie "\chapter": "\rmfamily" ("\chapter" mit Serifen); "\sffamily" ("\chapter" ohne Serifen)
+% \setkomafont{chapterentry}{\rmfamily\bfseries} 
+% \setkomafont{chapterentry}{\sffamily} 
+
+% Vereinheitlichung der Überschriften im Inhaltsverzeichnis. Ändert die Darstellung Überschriften der Kategorie "\chapter" im Inhaltsverzeichnis in die Kategorie "\section"; Anpassung der Schriftfamilie der Überschriften der Kategroie "\chapter": "\rmfamily" (Überschrift der Kategorie "\chapter" mit Serifen); "\sffamily" (Überschrift der Kategorie "\chapter" ohne Serifen)
+% \setkomafont{sectioning}{\rmfamily\normalsize} 
+% \setkomafont{sectioning}{\sffamily} 
+
+\KOMAoptions{toc=chapterentrydotfill} % Auch bei Überschriften der Kategorie "\chapter" Punkte zur Seitenzahl im Inhaltsverzeichnis hinzufügen
+
+% Bis Ebene 3 (subsection) im Inhaltsverzeichnis anzeigen
+\setcounter{tocdepth}{2} 
+
+% Eventuell ändern, um eine schönere Seitendarstellung zu erhalten
+\BeforeStartingTOC{\setstretch{1.075}} 
+
+% Schriftfamilie im Inhaltsverzeichnis auf Sans Serif stellen
+% \newcommand*\tocentryformat[1]{{\sffamily#1}}
+% \RedeclareSectionCommands
+%   [
+%     tocentryformat=\tocentryformat,
+%     tocpagenumberformat=\tocentryformat
+%   ]
+%   {section,subsection,subsubsection,paragraph,subparagraph}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% 		Inhaltsverzeichnis! (tocloft) 	   %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Inhaltsverzeichnis richtig darstellen
-\usepackage[titles]{tocloft}
+% \usepackage[titles]{tocloft}
 
 % Auch bei den Kapiteln Punkte darstellen
-\renewcommand{\cftchapdotsep}{\cftdotsep}
-\renewcommand{\cftchapleader}{\cftdotfill{\cftchapdotsep}}
+% \renewcommand{\cftchapdotsep}{\cftdotsep}
+% \renewcommand{\cftchapleader}{\cftdotfill{\cftchapdotsep}}
 
 % Seitenzahlen bei Kapitel in serifenloser Schriftart darstellen
-\renewcommand{\cftchappagefont}{\fontfamily{phv}\normalsize\bfseries}
+% \renewcommand{\cftchappagefont}{\fontfamily{phv}\normalsize\bfseries}
 
 % Verzeichnisse aktualisieren
-%Fonts im Inhaltsverzeichnis
-\renewcommand\cftchapfont{\fontfamily{phv}\normalsize\bfseries}
-\renewcommand\cftsecfont{\fontfamily{phv}\fontsize{11}{11}}
+% Fonts im Inhaltsverzeichnis
+% \renewcommand\cftchapfont{\fontfamily{phv}\normalsize\bfseries}
+% \renewcommand\cftsecfont{\fontfamily{phv}\fontsize{11}{11}}
 
-%Fonts in Kapiteln und sections...
-%\renewcommand\cftchappagefont{\fontfamily{phv}\normalsize\bfseries}
-\renewcommand\cftsecpagefont{\fontfamily{phv}\fontsize{11}{11}}
-
-\usepackage{makeidx}
+% Fonts in Kapiteln und sections...
+% \renewcommand\cftchappagefont{\fontfamily{phv}\normalsize\bfseries}
+% \renewcommand\cftsecpagefont{\fontfamily{phv}\fontsize{11}{11}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% 			Überschriften			  	   %%%
+%%% 			Überschriften!   		  	   %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Auch die 4. Ebene nummerieren (subsubsection)
 \setcounter{secnumdepth}{4} 
 
-% Bis Ebene 3 (subsection) im Inhaltsverzeichnis anzeigen
-\setcounter{tocdepth}{2}
-
 % Schriftarten und -größen für die Überschriften vorgeben
-\addtokomafont{chapter}{\fontfamily{phv}\fontsize{18}{20}\bfseries} 		% z. B. "2 Stand der Technik"
-\addtokomafont{section}{\fontfamily{phv}\fontsize{14}{16}\bfseries}			% z. B. "2.1 Literatur und Forschung"
-\addtokomafont{subsection}{\fontfamily{phv}\fontsize{12}{14}\bfseries}		% z. B. "2.1.1 Disziplinäre Entwicklung"
-\addtokomafont{subsubsection}{\fontfamily{phv}\fontsize{10}{12}\bfseries}	% z. B. "2.1.1.1 Genese wissenschaftlicher" Konzepte"
+\addtokomafont{chapter}{\fontfamily{phv}\fontsize{18}{20}\bfseries} 		% z. B. "2 Stand der Technik" \fontsize{Schriftgröße 18 Pt}{Abstand vor der Überschrift: 20 Pt}
+\addtokomafont{section}{\fontfamily{phv}\fontsize{14}{16}\bfseries}			% z. B. "2.1 Literatur und Forschung" \fontsize{Schriftgröße 14 Pt}{Abstand vor der Überschrift: 16 Pt}
+\addtokomafont{subsection}{\fontfamily{phv}\fontsize{12}{14}\bfseries}		% z. B. "2.1.1 Disziplinäre Entwicklung" \fontsize{Schriftgröße 12 Pt}{Abstand vor der Überschrift: 14 Pt}
+\addtokomafont{subsubsection}{\fontfamily{phv}\fontsize{10}{12}\bfseries}	% z. B. "2.1.1.1 Genese wissenschaftlicher" Konzepte" \fontsize{Schriftgröße 10 Pt}{Abstand vor der Überschrift: 12 Pt}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% 		Überschriften auslinieren 	   	   %%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+% Überschriften auslinieren
 % Horizonaler Abstand zwischen Nummerierung und Überschrift
 \renewcommand*{\chapterformat}{\makebox[1.3cm][l]{\thechapter\autodot}}
 \renewcommand*{\sectionformat}{\makebox[1.3cm][l]{\thesection\autodot}}
 \renewcommand*{\subsectionformat}{\makebox[1.3cm][l]{\thesubsection\autodot}}
 \renewcommand*{\subsubsectionformat}{\makebox[1.3cm][l]{\thesubsubsection\autodot}}
 
+%\RedeclareSectionCommand[beforeskip=-1.00\baselineskip,afterskip=0.50\baselineskip]{section}
+%\RedeclareSectionCommand[beforeskip=-0.75\baselineskip,afterskip=0.50\baselineskip]{subsection}
+%\RedeclareSectionCommand[beforeskip=-0.50\baselineskip,afterskip=0.25\baselineskip]{subsubsection}
+
+% \DeclareFixedFont{\chapterfont}{T1}{phv}{bx}{n}{11cm}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% 	Bezeichnungen: Abbildung / Tabelle 	   %%%
+%%%  Bezeichnungen!: Abbildungen! / Tabellen!  %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Bezeichnungsnamen angeben
+% Bezeichnung/Name für Abbildungen ändern
 \addto\captionsngerman{\renewcommand{\figurename}{Abbildung}}
+% \addto\captionsenglish{\renewcommand{\figurename}{Abbildung}}
+% \newcaptionname{ngerman}\figurename{Abbildung}% 
+
+% Bezeichnung/Name für Tabellen ändern
 \addto\captionsngerman{\renewcommand{\tablename}{Tabelle}}
+% \addto\captionsenglish{\renewcommand{\tablename}{Tabelle}}
+% Tabellen Bezeichnung ändern
+% \newcaptionname{ngerman}\tablename{Tabelle}
+
+% Bezeichnung/Name für Listings ändern
+\addto\captionsngerman{\renewcommand{\lstlistingname}{\latex-Quellcode}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% 				Schriftgröße			   %%%
-%%%			Abbildungen, Kopf- Fußzeilen, 	   %%%
-%%%		 	Seitenzahl,Textfarbe   	   		   %%%
+%%% 				Schriftgröße!			   %%%
+%%%				Kopfzeilen!, Fußzeilen!, 	   %%%
+%%%				Seitenzahl!, Textfarbe!,   	   %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Größen der Beschriftungen vorgeben
@@ -288,12 +443,13 @@ font=footnotesize, % Schriftgröße für Beschriftungen
 
 % Farben im Dokument zulassen
 \usepackage{color}
+\usepackage{xcolor} % Für die Farbe "gray" notwendig
 
 % Textfarbe schwarz definieren
 \color[cmyk]{0,0,0,1}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% 			Schriftarten			  	   %%%
+%%% 			Schriftarten!			  	   %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -319,6 +475,9 @@ font=footnotesize, % Schriftgröße für Beschriftungen
 %%% 			Ohne Serifen		  	   	   %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Helvetica-Klon (phv) als Standardschrift für serifenlose Texte (Überschriften und Überschriften im Inhaltsverzeichnis) verwenden
+\renewcommand{\sfdefault}{phv}
+
 % URW Nimbus Sans
 % Beispiele zum Schriftbild (Typografie)siehe: https://tug.org/FontCatalogue/urwnimbussans/ 
 %\usepackage[scaled]{helvet}
@@ -330,35 +489,32 @@ font=footnotesize, % Schriftgröße für Beschriftungen
 %\renewcommand*\familydefault{\sfdefault}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%        			Microtype			   	   %%%
+%%%        			Microtype!			   	   %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \usepackage[stretch=10,shrink=10]{microtype} % Verhindert Unschärfe und Verschwimmen der Schrift und reduziert die Anzahl der Badboxes (underfull/overfull); muss nach der Schriftart eingebunden werden
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%        			Kopfzeile			   	   %%%
+%%%        			Kopfzeilen!			   	   %%%
+%%%        			Kolumnentitel!		   	   %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Paket für Kopf- und Fußzeilen
-\usepackage[
-markcase=ignoreuppercase,
-automark,
-autooneside=false
+% Paket für das automatische Setzen von Kopf- und Fußzeilen
+\usepackage[%
+markcase=ignoreuppercase,%
+automark,%
+autooneside=false%
 ]{scrlayer-scrpage}
 %\usepackage[nouppercase]{scrpage2} % Obsoletes Paket, das durch das Paket "\usepackage{scrlayer-scrpage}" ersetzt wurde
 
-% Linie in der Kopfzeile definieren 
-% "Das Element [headsepline] wird nach \normalfont und nach den Elementen pageheadfoot und pagehead angewandt." (Kohm 2020: 268)
+% Linienstärke in der Kopfzeile definieren
 \KOMAoptions{headsepline=0.5pt}
 %\setheadsepline{0.5pt} % Befehlszeile für das obsolete Paket "\usepackage{scrpage2}"
-
-% Keine Kopf/Fußzeile auf leeren Seiten
-%\usepackage{emptypage} % Usage of package `emptypage' together(scrbook) with a KOMA-Script class is not recommended
 
 % Abstand zwischen Textkörper und Linie in der Kopfzeile
 \setlength{\headsep}{8mm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% 				Notizen		  	   	   	   %%%
+%%% 				Notizen!	  	   	   	   %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Erlaubt das Einfügen von Notizen
@@ -371,24 +527,26 @@ autooneside=false
 %\todo[inline]{Das ist eine Notiz}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% 			URLs/links					   %%%
+%%% 			Links! (url, hyperref)		   %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Darstellung URLs mit Zeilenumbruch
+% Darstellung URL mit Zeilenumbruch
 \usepackage[hyphens]{url}
 
 % Zeilenumbrüche in URLs nach folgenden Zeichen
 \appto\UrlBreaks{\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z\do\/\do\.}
 
 % Darstellung und Verlinkungen im pdf-Dokument einstellen
-\usepackage[hidelinks,% Links als normaler Text darstellen
-%    colorlinks, % Links in Farbe darstellen
-%    citecolor = blue, % Quellenangaben im Fließtext in der ausgewählten Schriftfarbe darstellen
-	pdfpagemode = UseNone,% Lesezeichen im PDF-Reader nicht anzeigen
-	pdfpagelayout = TwoColumnRight,% Seitenanzeige des PDF-Dokuments angeben
-	pdfauthor = {\autor},% Autor des PDF-Dokuments
-	pdftitle = {\pdftitle}]% Titel des PDF-Dokuments
-	{hyperref}
+\usepackage[%
+hidelinks,% Links als normaler Text darstellen
+% colorlinks,% Links in Farbe darstellen
+% citecolor = blue,% Quellenangaben im Fließtext in der ausgewählten Schriftfarbe darstellen
+pdfpagemode = UseNone,% Lesezeichen im PDF-Reader nicht anzeigen
+pdfpagelayout = TwoColumnRight,% Seitenanzeige des PDF-Dokuments angeben
+pdfauthor = {\autor},% Autor des PDF-Dokuments
+pdftitle = {\pdftitle},% Titel des PDF-Dokuments
+bookmarksnumbered=true,% Nummerierte Kapitel auch in der PDF-Navigation nummerieren
+]{hyperref}
 	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% 	Einstellungen weiterer Pakete		   %%%
@@ -417,8 +575,14 @@ autooneside=false
 % Neuer Spaltentyp "L" mit Breitenangabe für linksbündigen Flattersatz
 \newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% 			Mathematik!		 			   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % Mathematische Symbole
-\usepackage{amsmath,amssymb}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
 
 % Zeilen in Tabellen können verbunden werden
 \usepackage{multirow}
@@ -437,13 +601,13 @@ autooneside=false
 % Erweiterte Listenanweisungen
 \usepackage{etoolbox}
 
-% Einzug im Abbildungsverzeichnis zu null setzen
-\renewcommand{\cftfigindent}{0cm}
+% Einzug im Abbildungsverzeichnis zu null setzen (erfordert das Paket "tocloft")
+% \renewcommand{\cftfigindent}{0cm}
 
-% Einzug im Tabellenverzeichnis zu null setzen
-\renewcommand{\cfttabindent}{0cm}
+% Einzug im Tabellenverzeichnis zu null setzen (erfordert das Paket "tocloft")
+% \renewcommand{\cfttabindent}{0cm}
 	
-% Deutsches Abkürzungsverzeichnis erstellen
+% Abkürzungsverzeichnis erstellen in deutscher bzw. englischer Sprache
 %\usepackage[english]{nomencl}
 \usepackage[german]{nomencl}
 
@@ -460,7 +624,7 @@ autooneside=false
 \newcommand{\nomunit}[1]{\renewcommand{\nomentryend}{\hspace*{\fill}#1}}
 
 % Zeilenabstände verkleineren auf normalen Textabstand
-\setlength\nomitemsep{-\parsep}
+\setlength{\nomitemsep}{-\parsep}
 
 % Abkürzungsverzeichnis erzeugen
 \makenomenclature
@@ -468,27 +632,172 @@ autooneside=false
 % Weitere Verzeichnisse erzeugen
 \makeindex
 
-\AtBeginDocument{ % 
-  \newcaptionname{ngerman}\equationname{Formel} % 
-  \newcaptionname{ngerman}\listequationname{Formelverzeichnis} % 
-  \addtocontents{toc}{\protect\activateonlyattoc} % Z. B. für Umbrüche von langen Überschriften im Inhaltsverzeichnis mit dem Befehl \onlyattoc{\protect\\} (Beispiel: \chapter{Lange Kapitelüberschriften und der manuelle Zeilenumbruch \onlyattoc{\protect\\} für eine saubere Darstellung im Text})
+% Name des Formelverzeichnisses ändern
+\AtBeginDocument{% 
+  \newcaptionname{ngerman}\equationname{Formel}% 
+  \newcaptionname{ngerman}\listequationname{Formelverzeichnis}% 
+  \addtocontents{toc}{\protect\activateonlyattoc}% Z. B. für Umbrüche von langen Überschriften im Inhaltsverzeichnis mit dem Befehl \onlyattoc{\protect\\} (Beispiel: \chapter{Lange Kapitelüberschriften und der manuelle Zeilenumbruch \onlyattoc{\protect\\} für eine saubere Darstellung im Text})
 }
 
 \DeclareRobustCommand*{\onlyattoc}[1]{} % Z. B. für Umbrüche von langen Überschriften im Inhaltsverzeichnis mit dem Befehl \onlyattoc{\protect\\} (Beispiel: \chapter{Lange Kapitelüberschriften und der manuelle Zeilenumbruch \onlyattoc{\protect\\} für eine saubere Darstellung im Text})
 \newcommand*{\activateonlyattoc}{\DeclareRobustCommand*{\onlyattoc}[1]{##1}}% Z. B. für Umbrüche von langen Überschriften im Inhaltsverzeichnis mit dem Befehl \onlyattoc{\protect\\} (Beispiel: \chapter{Lange Kapitelüberschriften und der manuelle Zeilenumbruch \onlyattoc{\protect\\} für eine saubere Darstellung im Text})
 
-\DeclareNewTOC[ 
-  tocentryindent=0pt,
-  tocentrynumwidth=2em,
-  type=equation,
-  name={Gl.}, 
-  types=equations, 
-  listname={Formelverzeichnis}, 
+% Formatierung für Formelverzeichnis!
+\DeclareNewTOC[% 
+  tocentryindent=0pt,%
+  tocentrynumwidth=2em,%
+  hang=1.5em,% 
+  type=equation,%
+  name={Gl.},% 
+  types=equations,% 
+  listname={Formelverzeichnis},% 
 ]{equ} 
-\newcommand{\equationentry}[2][\theequation]{ % 
-  \addxcontentsline{equ}{equation}[{#1}]{\kern 1em #2} % 
+\newcommand{\equationentry}[2][\theequation]{% 
+  \addxcontentsline{equ}{equation}[{#1}]{\kern 1em #2}% 
 } 
 \BeforeStartingTOC[equ]{\def\autodot{:}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  				Index!					   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Ermöglicht die Nutzung eines Index bzw. Stichwortverzeichnisses
+\usepackage{makeidx}
+% Beispiel: Das ist ein Eintrag\index{Eintrag} in den Index.
+% Setze "\printindex" an die entsprechende Stelle in der Datei "KSP_Diss_A5.tex"
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  				Listings!				   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Ermöglicht das Ausgeben von LaTeX-Quellcode im Text
+\usepackage{listings}
+% \usepackage{listingsutf8}
+
+% Umlaute und Sonderzeichen in Listings ausgeben
+\lstset{literate=%
+{ä}{{\"a}}1 
+{ë}{{\"e}}1 
+{ï}{{\"i}}1 
+{ö}{{\"o}}1 
+{ü}{{\"u}}1
+{Ä}{{\"A}}1 
+{Ë}{{\"E}}1 
+{Ï}{{\"I}}1 
+{Ö}{{\"O}}1 
+{Ü}{{\"U}}1
+{á}{{\'a}}1 
+{é}{{\'e}}1 
+{í}{{\'i}}1 
+{ó}{{\'o}}1 
+{ú}{{\'u}}1
+{Á}{{\'A}}1 
+{É}{{\'E}}1 
+{Í}{{\'I}}1 
+{Ó}{{\'O}}1 
+{Ú}{{\'U}}1
+{à}{{\`a}}1 
+{è}{{\`e}}1 
+{ì}{{\`i}}1 
+{ò}{{\`o}}1 
+{ù}{{\`u}}1
+{À}{{\`A}}1 
+{È}{{\'E}}1 
+{Ì}{{\`I}}1 
+{Ò}{{\`O}}1 
+{Ù}{{\`U}}1
+{â}{{\^a}}1 
+{ê}{{\^e}}1 
+{î}{{\^i}}1 
+{ô}{{\^o}}1 
+{û}{{\^u}}1
+{Â}{{\^A}}1 
+{Ê}{{\^E}}1 
+{Î}{{\^I}}1 
+{Ô}{{\^O}}1 
+{Û}{{\^U}}1
+{œ}{{\oe}}1 
+{Œ}{{\OE}}1 
+{æ}{{\ae}}1 
+{Æ}{{\AE}}1 
+{ß}{{\ss}}1
+{ű}{{\H{u}}}1 
+{Ű}{{\H{U}}}1 
+{ő}{{\H{o}}}1 
+{Ő}{{\H{O}}}1
+{ç}{{\c c}}1 
+{Ç}{{\c C}}1
+{ã}{{\~a}}1 
+{å}{{\r a}}1 
+{Å}{{\r A}}1
+{ø}{{\o}}1 
+{€}{{\EUR}}1 
+{£}{{\pounds}}1
+{~}{{\textasciitilde}}1
+}
+
+% Abstand für Listings und Captions innerhalb einer Listing-Umgebung
+\lstset{%
+aboveskip=5mm,
+belowskip=1mm,
+abovecaptionskip=0mm,
+belowcaptionskip=3mm	
+}
+
+% Stil für Listings ohne Zeilennummern
+\lstdefinestyle{kspnonumbers}{%
+language=[LaTeX]TeX,
+commentstyle=\color{gray},
+keywordstyle=\color{magenta},
+stringstyle=\color{blue},
+% backgroundcolor=\color{gray},
+% inputpath=Ordnername
+basicstyle=\ttfamily\small\bfseries,
+breaklines=true,
+showstringspaces=false,
+% captionpos=b, % Beschriftung unterhalb des Listings
+tabsize=2,
+frame=tbrl,% Top ("T","t"), buttom ("B", "b"), left ("L", "l"), right ("R", "r")
+% frame=single,
+framesep=0em,% Breite des Rahmens über den Satzspiegelrand
+% xleftmargin=2em,% Abstand vom linken Satzspiegelrand nach innen
+% xrightmargin=2em,% Abstand vom rechten Satzspeigelrand nach innen
+% numbers=left,
+% numberstyle=\footnotesize\color{gray},
+% numbersep=10pt,
+% stepnumber=2,
+morekeywords={%
+chapter
+}
+}
+
+% % Stil für Listings mit Zeilennummern
+% \lstdefinestyle{kspnumbers}{%
+% % inputpath=Ordnername
+% basicstyle=\ttfamily\small,
+% % backgroundcolor=\color{gray},
+% breaklines=true,
+% commentstyle=\color{gray},
+% keywordstyle=\color{magenta},
+% stringstyle=\color{blue}
+% % captionpos=b,
+% showstringspaces=false,
+% numbers=left,
+% % numberstyle=\footnotesize\color{gray}
+% numbersep=10pt,
+% stepnumber=2,
+% tabsize=2,
+% frame=tblr,% Top, buttom, left, right
+% }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  				Latex!					   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Neuer Befehl für die Ausgabe des LaTeX-Logos
+\usepackage{xspace}
+\newcommand{\latex}{\LaTeX\xspace}
+\newcommand{\tex}{\TeX\xspace}
 
 
 

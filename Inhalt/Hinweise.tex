@@ -1,0 +1,126 @@
+\chapter[Hinweise für Autorinnen und Autoren]{Hinweise für Autorinnen \newline und Autoren -- notwendige Änderungen in \LaTeX}
+\label{chap:Hinweise}
+
+
+
+
+
+\section{Abstände für aufeinanderfolgende Überschriften}
+\label{sec:Abstaende fuer aufeinanderfolgende Ueberschriften}
+Stehen zwei Überschriften direkt untereinander, muss die Autorin oder der Autor gegebenenfalls zwischen den Überschriften manuell eine Anpassung des vertikalen Abstands mit dem Befehl \glqq vspace\grqq{} vornehmen. Für die Aneinanderreihung der Überschriften entnehmen Sie den vertikalen Abstand bitte wie folgt:
+
+\begin{itemize}
+\item \justifying Zwischen \glqq chapter\grqq{} und \glqq section\grqq{} muss keine Anpassung vorgenommen werden. (Sollabstand: 13~mm, gemessen von der Grundlinie der Überschrift \glqq chapter\grqq{} zur H-Linie der Überschrift \glqq section\grqq{}) 
+
+\item \raggedright Zwischen \glqq section\grqq{} und \glqq subsection\grqq{} bitte mit dem Befehl \glqq vspace\grqq{} einen zusätzlichen vertikalen Abstand einfügen von 2~mm. 
+% \begin{Verbatim}
+% \section{Überschrift Ebene Section}
+% \vspace{2mm}
+% \subsection{Überschrift Ebene Subsection}
+% \end{Verbatim}
+
+\fbox{\parbox{0.905\textwidth}{
+\texttt{%
+\textbackslash section\{Überschrift Ebene Section\}
+\textcolor{red}{\textbackslash vspace\{2mm\}}\newline
+\textbackslash subsection\{Überschrift Ebene subsection\}
+}}}
+
+(Sollabstand: 10~mm, gemessen von der Grundlinie der Überschrift \glqq section\grqq{} zur H-Linie der Überschrift \glqq subsection\grqq{})
+
+\item \raggedright Zwischen \glqq subsection\grqq{} und \glqq subsubsection\grqq{} bitte mit dem Befehl \glqq vspace\grqq{} einen zusätzlichen vertikalen Abstand einfügen von 3~mm. 
+% \begin{Verbatim}
+% \subsection{Überschrift Ebene Subsection}
+% \vspace{3mm}
+% \subsubsection{Überschrift Ebene Subsubsection}
+% \end{Verbatim}
+
+\fbox{\parbox{0.905\textwidth}{
+\texttt{%
+\textbackslash subsection\{Überschrift Ebene subsection\}
+\textcolor{red}{\textbackslash vspace\{3mm\}}\newline
+\textbackslash subsubsection\{Überschrift Ebene subsubsection\}
+}}}
+
+(Sollabstand: 10~mm, gemessen von der Grundlinie der Überschrift \glqq subsection\grqq{} zur H-Linie der Überschrift \glqq subsubsection\grqq{}) 
+\end{itemize}
+
+Das Ergebnis mit den entsprechenden vertikalen Abständen zwischen den Überschriften sehen Sie in Kapitel \ref{chap:UeberschriftenEbenen} (\glqq \nameref{chap:UeberschriftenEbenen}\grqq{}) auf Seite \pageref{chap:UeberschriftenEbenen} in dieser PDF-Datei.
+
+
+
+
+
+\section{Umbrüche in Überschriften}
+\label{sec:Umbrüche in Überschriften}
+Sollen lange Überschriften für das Inhaltsverzeichnis gekürzt werden, bietet der optionale Parameter des jeweiligen Befehls für Überschriften die Möglichkeit, eine kürzere Überschrift anzugeben. Das folgende Beispiel zeigt in eckigen Klammern die Überschrift für das Inhaltsverzeichnis und den Kolumnentitel. In geschweiften Klammern steht die Überschrift für den Fließtext. 
+
+\fbox{\parbox{0.98\textwidth}{%
+\texttt{%
+\textbackslash chapter[Eine kurze Überschrift]\{Eine lange Überschrift \newline im Text über mindestens zwei Zeilen\}%
+}}}
+
+Wird die Überschrift mit dem Befehl \glqq \textbackslash chapter\{\}\grqq{} nur in geschweifte Klammern gesetzt, ist die Überschrift im Text mit der Überschrift im Inhaltsverzeichnis und im Kolumnentitel identisch. Eine lange Überschrift kann im Text mit dem Befehl \glqq \textbackslash newline\grqq{} manuell umgebrochen werden, wie das folgende Beispiel zeigt.
+
+% \begin{lstlisting}[style=kspnonumbers, caption={Überschriften im Inhaltsverzeichnis und im Kolumnentitel stehen in eckigen Klammern. Überschriften im Fließtext stehen in geschweiften Klammern.}, label={lst:UeberschriftenZeilenumbruch}]
+% \chapter[Eine kurze Überschrift]{Eine lange Überschrift im Text über mindestens zwei Zeilen}
+% \end{lstlisting} 
+
+% \newpage
+
+\fbox{\parbox{0.98\textwidth}{%
+\texttt{%
+\textbackslash chapter[Kurze Überschriften für das Inhaltsverzeichnis und \newline den Kolumnentitel]\{Eine lange und sehr \textcolor{red}{\textbackslash newline} ausführliche \newpage Überschrift \textcolor{red}{\textbackslash newline} über mehrere Zeilen, die \textcolor{red}{\textbackslash newline} mit dem Befehl \textbackslash glqq newline\textbackslash grqq\{\} \textcolor{red}{\textbackslash newline} umgebrochen wurde\}%
+}}}
+
+% \begin{lstlisting}[style=kspnonumbers, caption={Überschriften im Text können mit dem Befehl \glqq \textbackslash newline\grqq{} manuell umgebrochen werden.}]
+% \chapter[Kurze Überschriften für das Inhaltsverzeichnis und den Kolumnentitel]{Eine lange und sehr \newline ausführliche Überschrift \newline über mehrere Zeilen, die \newline mit dem Befehl \glqq newline\grqq{} \newline umgebrochen wurde}
+% \end{lstlisting}
+
+\begin{figure}[h]
+	% \centering
+	\fbox{\includegraphics[width=0.98\textwidth]{Abbildungen/ueberschriften-im-text-umbrechen.png}}
+	\caption{Überschriften im Text mit dem Befehl \glqq \textbackslash newline\grqq{} manuell umbrechen. Die roten Linien im Beispiel zeigen die Stellen, an denen mithilfe des Befehls ein manueller Zeilenumbruch erzeugt wurde.}
+	\label{fig:ueberschrift-text-umbrechen}
+\end{figure}
+
+\newpage
+Bitte achten Sie darauf, dass das jeweilige Ende eines Kapitels nicht mit einer Abbildung oder einer Tabelle endet, da selbst manuelle Anpassungen des Abstandes zu einer darauf folgenden Überschrift nur schwer vorzunehmen sind.
+% \vspace{10mm}
+
+
+
+
+
+\section{Listen in einer Itemize- oder Enumerate-Umgebung}
+Aufzählungen in einer Itemize- oder Enumerate-Umgebung mit weniger als drei Zeilen stehen im Flattersatz. Der Befehl
+\glqq \textbackslash raggedright\grqq{} nach \glqq \textbackslash item\grqq{} erzeugt einen Flattersatz. Das folgende Beispiel zeigt den \LaTeX-Code, das Ergebnis sehen Sie auf Seite \pageref{itm:BeispielItemize} in dieser PDF-Datei.
+
+\fbox{\parbox{0.98\textwidth}{%
+\texttt{%
+\textbackslash begin\{itemize\} \newline%
+\textbackslash item[\$\textbackslash bullet\$] \textcolor{red}{\textbackslash raggedright} Aufzählungen mit weniger als drei Zeilen stehen im Flattersatz.\newline%
+\textbackslash end\{itemize\}% 
+}}}
+
+Aufzählungen in einer Itemize- oder Enumerate-Umgebung mit drei oder mehr Zeilen stehen im Blocksatz. Mit dem Befehl \glqq \textbackslash justifying\grqq{} nach dem Befehl \glqq \textbackslash item\grqq{} kann der Absatz als Blocksatz formatiert werden. Damit passt sich der Absatz optisch an den Fließtext an und erzeugt dadurch ein kohärentes Textbild. Das folgende Beispiel zeigt den \LaTeX-Code, das Ergebnis sehen Sie auf Seite \pageref{itm:BeispielItemize} in dieser PDF-Datei.
+
+\fbox{\parbox{0.98\textwidth}{%
+\texttt{%
+\textbackslash begin\{itemize\} \newline%
+\textbackslash item[\$\textbackslash bullet\$] \textcolor{red}{\textbackslash justifying} Aufzählungen mit drei oder mehr Zeilen stehen im Blocksatz. \newline%
+\textbackslash end\{itemize\}% 
+}}}
+
+Bitte beachten Sie, dass auch gerahmte Texte am Ende eines Kapitels den Abstand zur darauf folgenden Überschrift verfälschen können. Am besten fügen Sie in diesem Fall einen Absatz hinzu, um einen gleichbleibenden Abstand vor Überschriften zu gewährleisten (siehe Sollabstände im Kapitel \ref{sec:Abstaende fuer aufeinanderfolgende Ueberschriften}).
+
+
+
+
+
+\section[Literaturverzeichnis, Bibliografie- und Zitierstil]{Literaturverzeichnis, Bibliografie- \newline und Zitierstil}
+Bitte beachten Sie, dass der Bibliografie- und Zitierstil in dieser Vorlage voraussichtlich nicht den Anforderungen Ihres Instituts entsprechen. Aufgrund der Vielfalt verschiedener Stile kann diese \LaTeX-Vorlage einen exakt definierten Bibliografie- und Zitierstil für einzelne Anfragen nicht leisten. Bitte verwenden Sie die von Ihrem Institut bereitgestellten \LaTeX-Pakete für die von Ihnen genutzten Stile und passen Sie den Bibliografiestil \glqq \textbackslash bibliographystyle\{plainnat\}\grqq{} in der Datei \glqq Inhalt/Literaturverzeichnis.tex\grqq{} als auch den Zitierstil \glqq \textbackslash usepack\-age\{natbib\}\grqq{} in der Datei \glqq KSP\_Diss\_A5.tex\grqq{} entsprechend Ihrem Bedarf an. 
+
+Wenn Sie nicht alle Titel aus Ihrer Datei mit den bibliografischen Angaben (z.~B. \glqq Externe\_Literatur.bib\grqq{}) automatisch in das Literaturverzeichnis ausgeben möchten, entfernen Sie bitte die Befehle \glqq \textbackslash nocite\{*\}\grqq{} bzw. auch \glqq \textbackslash nocitejournal\{*\}\grqq{}  und \glqq \textbackslash nociteconference\{*\}\grqq{}  aus der Datei \glqq Inhalt/Literaturverzeichnis.tex\grqq{}.
+
+Der Zähler für die Titel in den Literaturverzeichnissen (z.~B. \glqq Journalartikel\grqq{} oder \glqq Konferenzbeiträge\grqq{}) wird standardmäßig auf \glqq [1]\grqq{} zurückgesetzt durch den optionalen Parameter \glqq resetlabels\grqq{} für den Befehl \glqq \textbackslash usepackage[resetlabels]\{multi\-bib\}\grqq{} in der Datei \glqq KSP\_Diss\_A5.tex\grqq{}. Wenn Sie eine fortlaufende Nummerierung der Titel für die Literaturverzeichnisse wünschen, entfernen Sie bitte den optionalen Parameter \glqq resetlabels\grqq{} im oben genannten Befehl.

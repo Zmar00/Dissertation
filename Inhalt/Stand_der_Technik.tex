@@ -1,8 +1,7 @@
 \markboth{Stand der Technik}{Stand der Technik}
-\chapter{Stand der Technik (Silbentrennung im Inhaltsverzeichnis \mbox{ist deaktiviert})}
-\label{cha:Stand der Technik}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter[Stand der Technik]{Stand der Technik. Überschriften mit mehreren Zeilen werden im Inhaltsverzeichnis automatisch umgebrochen}
+\label{cha:Stand der Technik}
 
 \section{Literatur und Forschung}
 \label{sec:Literatur und Forschung}
@@ -12,6 +11,7 @@ Lorem ipsum \citet{Bucher2021, Zeitschriftler2000} dolor sit amet, consetetur sa
 \label{ssec:Disziplinäre Entwicklung}
 %Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
+\vspace{3mm}
 \subsubsection{Genese wissenschaftlicher Konzepte}
 \label{sssec:Genese wissenschaftlicher Konzepte}
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
@@ -58,7 +58,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 	}
 \\ \vspace{3mm} % Abstand zur zweiten Bildreihe % Plus Abstand aufgrund des Befehles "\captionsetup[subfloat]{belowskip=}" aus der Datei dokOptions.tex
 %\hspace{-7pt} % Horizontale verschiebung der Bildreihe
-	\subfloat[Subfloat. Bild Nr. 3. Mit linebreak \linebreak für einen manuellen Zeilenumbruch]{%
+	\subfloat[Subfloat. Bild Nr. 3. Beispiel für einen \newline manuellen Zeilenumbruch.]{%
 		\includegraphics[width=0.49\linewidth]{Abbildungen/bib.jpg}%
 	}
 \hfill % Füllt den den vertikalen Abstand zwischen den Bildern auf, sofern die Bilder entsprechend klein sind
@@ -78,7 +78,7 @@ Aenean viverra rhoncus pede. Pellentesque habitant morbi tristique senectus et n
 %\newpage
 Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In dui magna, posuere eget, vestibulum et, tempor auctor, justo. In ac felis quis tortor malesuada pretium. Pellentesque auctor neque nec urna. Proin sapien ipsum, porta a, auctor quis, euismod ut, mi. Aenean viverra rhoncus pede. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut non enim eleifend felis pretium feugiat vivamus quis mi. Phasellus a est. Phasellus magna. In hac habitasse platea dictumst. Curabitur at lacus ac velit ornare lobortis. Aenean viverra rhoncus pede. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut non enim eleifend felis pretium feugiat vivamus quis mi. Phasellus a est. Phasellus magna. Phasellus a est. Phasellus magna. In hac habitasse platea dictumst. Curabitur at lacus ac velit ornare lobortis. Aenean viverra rhoncus pede. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut non enim eleifend felis pretium feugiat vivamus quis mi. Phasellus a est. Phasellus magna.
 
-Phasellus magna. Phasellus a est. Phasellus magna. In hac habitasse platea dictumst. Curabitur at lacus ac velit ornare lobortis. Aenean viverra rhoncus pede. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut non enim eleifend felis pretium feugiat vivamus quis mi. Phasellus a est. Phasellus magna et netus et malesuada fames ac turpis egestas
+Phasellus magna. Phasellus a est. Phasellus magna. In hac habitasse platea dictumst. Curabitur at lacus ac velit ornare lobortis. Aenean viverra rhoncus pede. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut non enim eleifend felis pretium feugiat vivamus quis mi. Phasellus a est. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
 
 %\newpage		 
 \begin{figure}[h]
@@ -95,7 +95,7 @@ Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac tu
 %Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In dui magna, posuere eget, vestibulum et, tempor auctor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In dui magna, posuere eget, vestibulum et, tempor auctor.
 
 \begin{table}[h] % "\begin{table}" ist eine Umgebung für Gleitobjekte, damit die Tabelle "\begin{tabular}" nummeriert, übertitelt und mit einem Label versehen und darauf verwiesen werden kann
-	\caption{Auch Tabellen ("table") werden immer mit dem Parameter [h] eingefügt. Vor und nach der Tabellen-Umgebung steht eine Leerzeile.}
+	\caption{Auch Tabellen (\glqq \textbackslash begin\{table\}\grqq{}) werden immer mit dem Parameter [h] eingefügt. Vor und nach der Tabellen-Umgebung steht eine Leerzeile.}
 	\begin{tabularx}{\textwidth}{XXXXXXXX} \toprule
 		Spalte1 & Spalte2 & Spalte3 & Spalte4 & Spalte5
 		& Spalte6 & Spalte7 & Spalte8 \\ \midrule

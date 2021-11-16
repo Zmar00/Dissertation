@@ -1,18 +1,11 @@
 \markboth{Inhaltsverzeichnis}{Inhaltsverzeichnis}
-\renewcommand{\contentsname}{Inhaltsverzeichnis}
 
-\renewcommand\cftdotsep{4.621757}  % Bei größeren Werten wird der letzte Punkt nicht mehr gezeichnet, weil er "außerhalb der Zeile" liegt
-\makeatletter
-\renewcommand{\@tocrmarg}{\@pnumwidth plus1fil} % Weitere Einstellung zu "Punkte im Inhaltsverzeichnis"
-\renewcommand*\@tocrmarg{4em plus1fil} % "4em": Automatischer Zeilenumbruch im Inhaltsverzeichnis bei langen Überschriften, horizontaler Abstand zum rechten Satzspiegelrand; "plus1fil": Keine Silbentrennung im Inhaltsverzeichnis
-\makeatother
+% \renewcommand\cftdotsep{4.621757}  % Bei größeren Werten wird der letzte Punkt nicht mehr gezeichnet, weil er "außerhalb der Zeile" liegt (erfordert das Paket "\usepackage{tocloft}")
 
-
-\BeforeStartingTOC{\setstretch{1.075}} % Eventuell ändern, um eine schönere Seitendarstellung zu erhalten
-
-\pdfbookmark{\contentsname}{toc}
-
+% \pdfbookmark{\contentsname}{toc} % Name des Inhaltsverzeichnisses "Contents im PDF-Dokument" (erfordert das Paket "\usepackage{bookmark}")
+\cleardoublepage\pdfbookmark{Inhaltsverzeichnis}{toc} % Name des Inhaltsverzeichnisses "Inhaltsverzeichnis" im PDF-Dokument (erfordert das Paket "\usepackage{bookmark}")
+% \pdfbookmark{Inhaltsverzeichnis}{toc} % Name des Inhaltsverzeichnisses "Inhaltsverzeichnis" im PDF-Dokument (erfordert das Paket "\usepackage{bookmark}")
+\renewcommand{\contentsname}{Inhaltsverzeichnis} % Ändert die Überschrift und das Lesezeichen in der PDF-Datei von "Contents" in "Inhaltsverzeichnis"; dieser Befehl ist Lokalitätsgebunden
 \tableofcontents
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,11 +1,11 @@
-% Version 1.1.0 DE
+% Version 1.2.0 DE
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%        			Päambel   				   %%%
+%%%        			Päambel!  				             %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%        			Päambel / Kompilieren      %%%
+%%%        			Päambel / Kompilieren!         %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Wichtig:
@@ -24,7 +24,7 @@
 %- Reihenfolge der Kompiliervorgänge 
 % pdflatex KSP_Diss_A5
 % bibtex KSP_Diss_A5
-% bibtex journal				% Der Dateiname der mit Bibtex auszuführenden Datei wird im Befehl "\newcites{journal}" in dieser TeX-Datei angegeben
+% bibtex journal				  % Der Dateiname der mit Bibtex auszuführenden Datei wird im Befehl "\newcites{journal}" in dieser TeX-Datei angegeben
 % bibtex conference				% Der Dateiname der mit Bibtex auszuführenden Datei wird im Befehl "\newcites{conference}" in dieser TeX-Datei angegeben
 % pdflatex KSP_Diss_A5
 % pdflatex KSP_Diss_A5
@@ -40,62 +40,76 @@
 % Optionen/TeXstudio konfigurieren.../Erzeugen/ -> Und hier die Einträge unter "Standardcompiler" und "Standard Bibliographieprogramm" anpassen.
 %
 % In TeXstudio die Kompilieraufrufe manuell ausführen (Windows 10, TeXstudio 3.0.1):
-% Tools/Befehle/ -> Und hier die Einträge "PDFLaTeX" und "Bibtex" (Bibtex kann jedoch nicht für bestimmte Dateien in TeXstudio ausgeführt werden, hierzu muss die Eingabeaufforderung genutzt werden s.o.).
+% Tools/Befehle/ -> Und hier die Einträge "PDFLaTeX" und "Bibtex" (Bibtex kann jedoch nicht für bestimmte Bib-Dateien in TeXstudio ausgeführt werden, hierzu muss die Eingabeaufforderung genutzt werden s.o.).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%        			Päambel / Documentclass    %%%
+%%%        		Päambel / Dokumentklasse!        %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Lädt die Dokumentklasse "scrbook" (KOMA-Script-Book) mit den Eigenschaften: keine Punkte hinter der Nummerierung, Schriftgröße 10pt, Sprachpakete: englische und neue deutsche Rechtschreibung einbinden (deutsch ist Standard)
-\documentclass[listof=totoc,numbers=noenddot,10pt,english,ngerman]{scrbook} 
+\documentclass[%
+fontsize=10pt,% Schriftgröße 10 Punkte
+numbers=noenddot,% Kein Endpunkt nach der Nummerierung (i.e. 3.1 statt 3.1.)
+% chapteratlists=0pt,% toc, lot, lof: Vertikaler Abstand zwischen den Einträgen auf 0 setzen
+toc=listof,% Setzt Abbildungsverzeichnis (lof) und Tabellenfervzeichnis (lot) ins Inhaltsverzeichnis (toc)
+% toc=bibliography,% Setzt die Bibliographie ins Inhaltsverzeichnis (funktioniert nicht mit mehreren Bibliografien, auch wenn die Befehle "\addcontentsline{toc}{section}{Journalartikel}", "\addcontentsline{toc}{section}{Konferenzbeiträge}", "\addcontentsline{toc}{chapter}{Literaturverzeichnis" in der Datei "/Inhalt/Literatur.tex" auskommentiert sind})
+toc=chapterentrywithdots,% Setzt im Inhaltsverzeichnis auch bei Überschriften der Kategorie "\chapter" eine gepunktete Linie zur Seitenzahl
+% headings=optiontotocandhead,% Für die Nutzung des Befehls "\addchap[tocentry={unnummeriert im Inhaltsverzeichnis},head={unnummeriert in der Kopfzeile}]{unnummeriert}{}"
+% headinclude,% 
+% twoside,% Standard für diese Dokumentklasse "scrbook"
+listof=nochaptergap,% Kein vertikaler Abstand zwischen den Einträgen (kapitelweise) im Abbildungs- oder Tabellenverzeichnis 
+% toc=flat% Reduziert den Abstand zwischen Nummer links und Text auf ein Mindestmaß; Unterkapitel werden nicht eingerückt
+% toc=chapterentrydots=true,% KOMA guide, S. 74
+% toc=sectionentrydots=true% KOMA guide, S. 74
+]{scrbook} % Lädt die Dokumentklasse "scrbook" (KOMA-Script-Book von Markus Kohm et al.) 
 %\documentclass[halfparskip,numbers=noenddot,a5paper,10pt,english,ngerman]{scrbook}
 
-% \RequirePackage[ngerman=ngerman-x-latest]{hyphsubst}
-% Verbesserte Silbentrennung im Deutschen nach dem aktuellen Stand
+\usepackage[utf8]{inputenc} % Eingabe von Umlauten (ä, ö, ü sowie ß) durch den Parameter [utf8] möglich
 
-% Weitere Pakete hier einfügen
+\usepackage[T1]{fontenc} % Ausgabe von Umlauten
+
+% \RequirePackage[ngerman=ngerman-x-latest]{hyphsubst} % Verbesserte Silbentrennung im Deutschen nach dem aktuellen Stand
+
+\usepackage[%
+english,% Zweite Sprache im Dokument. Anmerkung: Wenn der optionale Parameter "english" zuletzt gesetzt wird, werden die Bezeichnungen "Abbildung", "Tabelle" etc. ins Englische übersetzt
+ngerman,% Deutsche Bezeichnungen "Abbildung", "Tabelle", "Tabellenverzeichnis", "Abbildungsverzeichnis" etc.
+]{babel} % Laden der Sprachpakete (Reihenfolge ist relevant! (Case-sensitive) Für ein Dokument in deutscher Sprache den optionalen Paramter "ngerman" ZULETZT setzen)
+
+% Weitere Pakete
 \usepackage{booktabs}
 \usepackage{wrapfig}
 \usepackage[all]{nowidow} % Verhindert Hurenkinder
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
 \usepackage{acronym}
 \usepackage{trfsigns}
-\usepackage{caption} % Für Bildunterschriften und Tabellenüberschriften
-\usepackage{subcaption} % Für "subfigures"
 \usepackage{enumitem}
 \usepackage{calc}
-\usepackage{multirow}
+\usepackage{subcaption} % Für "subfloat"-Umgebungen (Mehrbildgrafiken/Mehrfachabbildungen)
+%\usepackage{subfigure} % Veraltetes Paket für "subfigures"
 %\usepackage{epstopdf}
-%\usepackage{url}
-%\usepackage{subfigure} % old package for subfigures
 %\usepackage{wrapfig}
-%\providecommand\phantomsection{}
-%\usepackage{color}
 %\usepackage{cancel}
 %\usepackage{amsthm}
 %\usepackage{ulem}
 %\usepackage{empheq}
 %\usepackage{xcolor}
 %\usepackage{float}
+%\providecommand\phantomsection{}
 \usepackage{blindtext} % Blindtext zur Textdarstellung in der Vorlage ermöglichen
+\usepackage{fancyvrb} % Für Verbatim-Umgebungen zum Ausgeben von LaTeX-Quellcode
 %\usepackage{showframe} % Seitenränder anzeigen
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%    		Präambel / Silbentrennung     	   %%%
+%%%    		Präambel / Silbentrennung!     	     %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \hyphenation{
 Ge-schich-te
 An-ten-ne
-% Worte, die nicht getrennt werden sollen, bitte ohne Bindestrich in diese Liste entragen
+% Worte, die nicht getrennt werden sollen, bitte ohne Bindestrich in diese Liste eintragen
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%       Präambel /  Bibliografie			   %%%
-%%%			/ Zitat / Zitieren 				   %%%
-%%%			Literaturverzeichnis	   		   %%%
+%%%       Präambel /  Zitate!				           %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Das Natbib-Paket enthält zwei grundlegende Zitierbefehle: \ citet und \ citep für Textzitate bzw. Zitate in Klammern.
@@ -124,6 +138,7 @@ round,% Runde Klammern
 {}% Interpunktion vor Jahr
 {,}% Interpunktion zwischen verschiedenen Erscheinungsjahren von Titeln des gleichen Autors
 %
+% Zitieren!
 % Die folgenden Beispiele sind entnommen aus Patrick W. Daly (2010) "Natural Sciences Citations and References. Author-Year and Numerical Schemes"
 %\citet{jon90} --> Jones et al. (1990)
 %\citet[chap.~2]{jon90} --> Jones et al. (1990, chap. 2)
@@ -139,6 +154,12 @@ round,% Runde Klammern
 %\citep{jon90,jon91} --> (Jones et al., 1990, 1991)
 %\citep{jon90a,jon90b} --> (Jones et al., 1990a,b)
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%       Präambel /  Bibliografie!			       %%%
+%%%			  Literaturverzeichnis!			   f        %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \usepackage[resetlabels]{multibib} % Jede Bibliographie beginnt bei Zähler [1], sofern als Bibliografiestil "\bibliographiestyle{plain}" gewählt ist
 %\usepackage{multibib} % Der Zähler der Bibliographien wird nicht zurückgesetzt (fortlaufende Zählung beginnend bei [1] in der Bibliografie"Journalartikel" und fortlaufend in der Bibliografie "Konferenzbeiträge"), sofern als Bibliografiestil "\bibliographiestyle{plain}" gewählt ist, bei einem anderen Bibliografiestil, z.B. "\bibliographystyle{alpha} wird kein Zähler verwendet
 \newcites{journal}{Literatur/Eigene_Journal_Papers}
@@ -146,15 +167,15 @@ round,% Runde Klammern
 %
 \usepackage{etoolbox}
 \BeforeBeginEnvironment{thebibliography}{% Umdefinieren, um die eigenen Publikationen ohne Umbruch einzufügen
-  \let\origchapter\chapter % save the original definition of "\chapter"
-  \let\chapter\section % make \chapter behave like "\section"
+  \let\origchapter\chapter% Speichert die Definition des Befehls "\chapter"
+  \let\chapter\section% Ändert die Darstellung des Befehls "\chapter" in "\section"
 }
 \AfterEndEnvironment{thebibliography}{%
-  \let\chapter\origchapter % restore the original definition of "\chapter"
+  \let\chapter\origchapter% Stellt die Definition des Befehls "\chapter" wieder her
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%          Präambel / Titelangaben		   %%%
+%%%          Präambel / Titel!				         %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % pdf-Titel
@@ -163,7 +184,7 @@ round,% Runde Klammern
 % Autor
 \newcommand{\autor}{Vorname\ Nachname}
 
-% Präambel weitestgehend ausgelagert in die Datei "dokOptions.tex"; Einbindung der Datei muss an dieser Stelle erfolgen
+% Präambel weitestgehend ausgelagert in die Datei "dokOptions_A5.tex"; Einbindung der Datei muss an dieser Stelle erfolgen
 % Einstellungen wie Skalierung, Schriftart, Abstände sowie die Pakete "geometry", "figure", "captions" werden in der folgenden Datei verwaltet
 \input{dokOptions_A5}
 
@@ -192,38 +213,40 @@ round,% Runde Klammern
 %\ohead[]{\headmark} % Kopfzeilen oben außen
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%				Begin Dokument				   %%%
+%%%				Begin Dokument!				               %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%				Dokument / Layout			   %%%
+%%%				Dokument / Seitenzahl!		           %%%
+%%%				Kopfzeilen! und Fußzeilen!           %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Voreingestellter Seitenstil verwenden
-\pagenumbering{gobble}
+% Keine Seitenzahl auf leeren Seiten anzeigen?
+% \pagenumbering{gobble}
 
-% Römische Seitennummerierung verwenden
+% Voreingestellter Seitenstil verwenden für Kopfzeilen bzw. Kolumnentitel und Seitennummern (Kopf- und Fußzeile)
 \pagestyle{scrheadings}
+% \pagestyle{myheadings} % Verwendet die Angaben aus den Befehlen "\markright" bzw. "\markboth" für Kolumnentitel bzw. Kopfzeile (diese Kolumnentitel sind nicht nummeriert und die Kopfzeile besitzt keine Linie)
 
-% Setzt Kapitelüberschrift auch auf rechte Seite der Kopfzeile, da keine Unterkapitel
+% Setzt Kapitelüberschrift auch auf der rechten Seite der Kopfzeile, wenn keine Unterkapitel vorhanden sind
 \renewcommand{\chaptermark}[1]{\markboth{\thechapter\ \  #1}{\thechapter\ \  #1}} 
 
 % Seitenzahl mit 5 beginnen (KSP setzt 4 beschriftete Seiten davor)
 %\setcounter{page}{5}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%				Titelblatt (include)		   %%%
+%%%				Titelblatt! (include)		             %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \include{Inhalt/Titelblatt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%			Titelteil / Kapitel (include)	   %%%
+%%%			Vorwort / Kapitel! (include)	         %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Titelteil; Kapitel im Titelteil erhalten keine Kapitelnummer im Inhaltsverzeichnis
+% Mit dem Befehl "\frontmatter" der Dokumentklasse "book" erhalten die Kapitel "Zusammenfassung", "Vorwort", "Inhaltsverzeichnis", "Abkürzungen und Symbole" die Seitennummerierung in kleinen römischen Ziffern
 \frontmatter 
 
 % Zusammenfassung
@@ -238,18 +261,18 @@ round,% Runde Klammern
 % Abkürzungen und Symbole
 \include{Inhalt/Abkuerzungen_und_Symbole}
 
-% Jedes neue Kapitel beginnt auf der rechten Seite
+% Dieser Befehl fügt (falls nötig) eine leere Seite ein, damit das nächste Kapitel auf einer ungeraden Seite beginnt; 
 \cleardoublepage 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%				Hauptteil / Layout			   %%%
+%%%				Hauptteil / Layout!			             %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Römische Seitennummerierung verwenden
-\pagenumbering{roman} 
-\setcounter{page}{1}
+% Arabische Seitennummerierung verwenden und bei Seite 1 beginnen; aufgrund der Dokumentklasse "book" ist dies nicht erforderlich, da die Einstellungen mit dem Befehl "\mainmatter" gesetzt werden
+% \pagenumbering{arabic} 
+% \setcounter{page}{1}
 
-% Hauptteil; Kapitel im Hauptteil werden mit Zahlen nummeriert im Inhaltsverzeichnis
+% Mit dem Befehl "\mainmatter" der Dokumentklasse "book" erhalten die folgenden Kapitel die Seitennummerierung in arabischen Ziffern
 \mainmatter 
 
 % Zeilenabstand innerhalb Tabellen (urspruenglich 1,4)
@@ -261,34 +284,35 @@ round,% Runde Klammern
 % Abstände bei Aufzählungspunkten
 \setlist[itemize]{itemsep=0mm, topsep=1mm} 
 
-% Arabische Seitennummerierung verwenden
-\pagenumbering{arabic} 
 
-%\RedeclareSectionCommand[beforeskip=-1.00\baselineskip,afterskip=0.50\baselineskip]{section}
-%\RedeclareSectionCommand[beforeskip=-0.75\baselineskip,afterskip=0.50\baselineskip]{subsection}
-%\RedeclareSectionCommand[beforeskip=-0.50\baselineskip,afterskip=0.25\baselineskip]{subsubsection}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%			Hauptteil / Kapitel (include)	   %%%
+%%%			Hauptteil / Kapitel! (include)	       %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Hinweise für Autorinnen und Autoren
+\include{Inhalt/Hinweise}
 
 % Einleitung und Motivation
-\include{Inhalt/01_Einleitung_und_Motivation}
+\include{Inhalt/Einleitung_und_Motivation}
 
 % Stand der Technik
-\include{Inhalt/02_Stand_der_Technik}
+\include{Inhalt/Stand_der_Technik}
 
 % Theorie
-\include{Inhalt/03_Theorie}
+\include{Inhalt/Theorie}
+
+% Überschriften
+\include{Inhalt/Ueberschriften}
 
 % Zusammenfassung und Ausblick
-\include{Inhalt/04_Zusammenfassung_und_Ausblick}
+\include{Inhalt/Zusammenfassung_und_Ausblick}
 
 % Schlussfolgerungen und Ausblick
 %\include{Inhalt/07_Schlussfolgerungen_und_Ausblick}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%				Anhang (include)	 		   %%%
+%%%				Anhang! (include)	 		               %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Anhang; Kapitel im Anhang erhalten Großbuchstaben im Inhaltsverzeichnis
@@ -297,22 +321,25 @@ round,% Runde Klammern
 \include{Inhalt/Anhang}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%				Verzeichnisse (include)		   %%%
+%%%				Verzeichnisse! (include)	           %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Abbildungsverzeichnis
+% Abbildungsverzeichnis! lof! listoffigures!
+\renewcommand{\listfigurename}{Abbildungsverzeichnis} % Ändert die Überschrift und das Lesezeichen in der PDF-Datei von "List of Figures" in "Tabellenverzeichnis"; dieser Befehl ist lokalitätsgebunden
 \listoffigures
+% \addcontentsline{toc}{chapter}{\listfigurename} % Aufgrund des in der Dokumentklasse "book" angegebenen optionalen Parameters "listof=totoc" ist diese Befehlszeile nicht nötig
 
-% Tabellenverzeichnis
+% Tabellenverzeichnis! lot! listoftables!
+\renewcommand{\listtablename}{Tabellenverzeichnis} % Ändert die Überschrift und das Lesezeichen in der PDF-Datei von "List of Tables" in "Tabellenverzeichnis"; dieser Befehl ist lokalitätsgebunden
 \listoftables
+% \addcontentsline{toc}{chapter}{\listtablename} % Aufgrund des in der Dokumentklasse "book" angegebenen optionalen Parameters "listof=totoc" ist diese Befehlszeile nicht nötig
 
-% Literaturverzeichnis
+% Listingsverzeichnis! listoflistings! 
+% \renewcommand{\lstlistlistingname}{Listingsverzeichnis} % Ändert die Überschrift und das Lesezeichen in der PDF-Datei von "List " in "LaTeX-Quell-Code"; diese Befehl ist lokalitätsgebunden
+% \renewcommand{\lstlistlistingname}{latex-Quellcode-Verzeichnis} % Ändert die Überschrift und das Lesezeichen in der PDF-Datei von "List " in "LaTeX-Quellcode-Verzeichnis"; diese Befehl ist lokalitätsgebunden
+% \lstlistoflistings
+
+% Literaturverzeichnis!
 \include{Inhalt/Literaturverzeichnis}
-
-% Setzt Kapitelüberschrift auch auf rechte Seite der Kopfzeile, da keine Unterkapitel
-\renewcommand{\chaptermark}[1]{\markboth{\thechapter\ \  #1}{\thechapter\ \  #1}} 
-
-% Änderung der Abstände zwischen den Einträgen
-\setlength{\parskip}{0.3\baselineskip plus 0.15\baselineskip minus 0.15\baselineskip} 
 
 \end{document}
